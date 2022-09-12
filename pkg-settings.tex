@@ -1,0 +1,51 @@
+% package settings
+\unimathsetup{
+  math-style=ISO,
+  bold-style=ISO,
+  sans-style=italic,
+  nabla=upright,
+  partial=upright,
+  mathrm=sym,
+}
+
+\sisetup{
+  separate-uncertainty=true,
+  per-mode=reciprocal,
+  output-decimal-marker={.},
+  range-phrase = \text{--},
+}
+\DeclareSIUnit\crab{Crab}
+
+% tikz settings
+\usetikzlibrary{overlay-beamer-styles,calc,tikzmark,decorations.pathreplacing}
+\tikzset{fontscale/.style = {font=\relsize{#1}}}
+
+\setmathfont{XITS Math}[range={scr, bfscr}]
+\setmathfont{XITS Math}[range={cal, bfcal}, StylisticSet=1]
+
+% checks if argument is empty
+\def \ifempty#1{\def\temp{#1} \ifx\temp\empty }
+
+% This adds a circle with a picture of your choice in it.
+% Usage:
+% \roundpic[<optional arguments>, eg. xshift or yshift]\
+% {<radius of the cirlce [cm]>}{<picture width [cm]>}{<path_to_picture>}{x pos}{y pos}{label}
+\newcommand{\roundpic}[7][]{%
+  \ifempty{#7}
+    \node [circle, draw, color=tugreen, minimum width = #2,
+      path picture = {
+        \node [#1] at (path picture bounding box.center) {
+          \includegraphics[width=#3]{#4}};
+      }] at (#5,#6) {};
+  \else
+    \node [circle, draw, color=tugreen, minimum width = #2,
+      path picture = {
+        \node [#1] at (path picture bounding box.center) {
+          \hyperlink{#7}{\includegraphics[width=#3]{#4}}};
+      }] at (#5,#6) {};
+  \fi
+}%
+
+% Comment this out to represent vectors with an arrow on top.
+% Uncomment this to represent vectors as bold symbols.
+\renewcommand{\vec}[1]{\mathbf{#1}}

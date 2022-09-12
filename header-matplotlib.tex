@@ -1,0 +1,45 @@
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{fontspec}
+\usepackage{nicefrac}
+\usepackage{xfrac}
+\usepackage{xspace}
+
+\usepackage[
+  math-style=ISO,    % ┐
+  bold-style=ISO,    % │
+  sans-style=italic, % │ follow ISO standard
+  nabla=upright,     % │
+  partial=upright,   % ┘
+  warnings-off={           % ┐
+    mathtools-colon,       % │ disable some warnings
+    mathtools-overbracket, % │
+  },                       % ┘
+]{unicode-math}
+
+% font settings
+\setmathfont{Libertinus Math}
+\setmathfont{XITS Math}[range={scr, bfscr}]
+\setmathfont{XITS Math}[range={cal, bfcal}, StylisticSet=1]
+
+% settings for decimals and units
+\usepackage[
+  separate-uncertainty=true,
+  per-mode=fraction,
+]{siunitx}
+\DeclareSIUnit\year{yr}
+\DeclareSIUnit\deg{deg}
+\DeclareSIUnit\pe{p.e.}
+
+\usepackage[
+  version=4,
+  math-greek=default,
+  text-greek=default,
+]{mhchem}
+
+
+% \usepackage[xindy,toc]{glossaries}
+% \newcommand{\magic}{MAGIC\xspace}
+\newcommand{\cta}{CTA\xspace}
+\newcommand{\ctapipe}{\texttt{ctapipe}\xspace}
