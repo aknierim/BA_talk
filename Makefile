@@ -64,7 +64,7 @@ $(tab_writer): thesis_scripts/table_writer.py | build
 
 
 
-all: $(PLOTS) presentation_dark.pdf # presentation_light.pdf
+all: presentation_light.pdf presentation_dark.pdf # $(PLOTS)
 
 light: presentation_light.pdf
 
@@ -84,11 +84,13 @@ plots_dark: plots/plot.py matplotlibrc header-matplotlib.tex
 
 .DELETE_ON_ERROR:
 presentation_light.pdf: FORCE | build
+	@echo 0 > build/darktheme.var
 	@TEXINPUTS="$$(pwd):" latexmk $(TeXOptions) presentation.tex 1> build/log || cat build/log
 	mv build/presentation.pdf $@
 
 presentation_dark.pdf: FORCE | build
-	@TEXINPUTS="$$(pwd):" latexmk $(TeXOptions) '\def\darktheme{1}\input{presentation.tex}' 1> build/log || cat build/log
+	@echo 1 > build/darktheme.var
+	@TEXINPUTS="$$(pwd):" latexmk $(TeXOptions) presentation.tex 1> build/log || cat build/log
 	mv build/presentation.pdf $@
 
 tikz: FORCE tikz/ | build
