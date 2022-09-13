@@ -1,5 +1,23 @@
+from argparse import ArgumentParser
 import matplotlib.pyplot as plt
 import pandas as pd
+
+parser = ArgumentParser()
+
+parser.add_argument('--theme',
+                    default='light',
+                    nargs='?',
+                    choices=['light', 'dark'],
+                    help="""The theme for the plots. Choose from 'light' and 'dark'
+                    \n(default: %(default)s)
+                    """
+)
+
+args = parser.parse_args()
+
+if args.theme == 'dark':
+    plt.style.use('plots/darkmode.mplstyle')
+
 
 df_angres = pd.read_csv('plots/data/combined_table.csv')
 

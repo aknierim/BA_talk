@@ -495,7 +495,7 @@ Overfull \hbox (1.0944pt too wide) has occurred while \output is active
 Overfull \vbox (0.4pt too high) has occurred while \output is active [1{/home/a
 knierim/.local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}</home
 /aknierim/BA/BA_talk/logos/tu_light.pdf></home/aknierim/BA/BA_talk/graphics/con
-tours_mst.jpg>]
+tours_mst_light.png>]
 No file presentation.toc.
 
 Overfull \hbox (1.0944pt too wide) has occurred while \output is active
@@ -511,9 +511,47 @@ Overfull \vbox (0.4pt too high) has occurred while \output is active [3])
 Overfull \hbox (1.0944pt too wide) has occurred while \output is active
  [][]  
 
-Overfull \vbox (0.4pt too high) has occurred while \output is active [4])
+Overfull \vbox (0.4pt too high) has occurred while \output is active [4</home/a
+knierim/BA/BA_talk/build/quantiles_plot.pdf>])
+(/home/aknierim/BA/BA_talk/content/03_results.tex
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
 
-LaTeX Warning: Hook 'shipout/lastpage' executed on wrong page (1 not 4).
+Overfull \vbox (0.4pt too high) has occurred while \output is active [5</home/a
+knierim/BA/BA_talk/build/ar_vs_eff.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [6</home/a
+knierim/BA/BA_talk/build/metrics_tailcuts.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [7</home/a
+knierim/BA/BA_talk/build/metrics_mars.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [8</home/a
+knierim/BA/BA_talk/build/metrics_fact.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [9</home/a
+knierim/BA/BA_talk/build/metrics_tcc.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [10</home/
+aknierim/BA/BA_talk/build/metrics_baseline.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [11</home/
+aknierim/BA/BA_talk/build/metrics_all.pdf>])
+(/home/aknierim/BA/BA_talk/content/04_conclusions.tex)
+
+LaTeX Warning: Hook 'shipout/lastpage' executed on wrong page (1 not 11).
                Rerun to correct this.
 
 (/home/aknierim/BA/BA_talk/build/presentation.aux)
@@ -522,16 +560,18 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
 )
 (see the transcript file for additional information)
- 1463 words of node memory still in use:
-   29 hlist, 9 vlist, 4 rule, 5 local_par, 36 glue, 6 kern, 14 penalty, 6 glyph
-, 48 attribute, 74 glue_spec, 48 attribute_list, 4 write, 1 pdf_dest, 8 pdf_col
-orstack, 1 pdf_setmatrix, 1 pdf_save, 1 pdf_restore nodes
-   avail lists: 1:13,2:463,3:231,4:235,5:233,6:43,7:1455,8:13,9:455,10:9,11:96
+ 1560 words of node memory still in use:
+   35 hlist, 8 vlist, 5 rule, 5 local_par, 38 glue, 6 kern, 13 penalty, 1 glyph
+, 58 attribute, 74 glue_spec, 58 attribute_list, 10 write, 1 pdf_dest, 8 pdf_co
+lorstack, 2 pdf_setmatrix, 2 pdf_save, 2 pdf_restore nodes
+   avail lists: 1:13,2:449,3:235,4:235,5:237,6:43,7:1466,8:13,9:465,10:9,11:96
+
+warning  (pdf backend): unreferenced destination with name 'Outline0.4'
 </home/aknierim/.local/texlive/2022/texmf-dist/fonts/opentype/public/fira/FiraM
 ono-Regular.otf></home/aknierim/.local/texlive/2022/texmf-dist/fonts/opentype/p
 ublic/fira/FiraSans-Light.otf></home/aknierim/.local/texlive/2022/texmf-dist/fo
 nts/opentype/public/fira/FiraSans-Medium.otf>
-Output written on presentation.pdf (4 pages, 3761432 bytes).
+Output written on presentation.pdf (11 pages, 1684856 bytes).
 Transcript written on presentation.log.
 Latexmk: Getting log file 'build/presentation.log'
 Latexmk: Examining 'build/presentation.fls'
@@ -1036,7 +1076,7 @@ Overfull \hbox (1.0944pt too wide) has occurred while \output is active
 Overfull \vbox (0.4pt too high) has occurred while \output is active [1{/home/a
 knierim/.local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}</home
 /aknierim/BA/BA_talk/logos/tu_light.pdf></home/aknierim/BA/BA_talk/graphics/con
-tours_mst.jpg>] (/home/aknierim/BA/BA_talk/build/presentation.toc)
+tours_mst_light.png>] (/home/aknierim/BA/BA_talk/build/presentation.toc)
 Overfull \hbox (1.0944pt too wide) has occurred while \output is active
  [][]  
 
@@ -1050,20 +1090,60 @@ Overfull \vbox (0.4pt too high) has occurred while \output is active [3])
 Overfull \hbox (1.0944pt too wide) has occurred while \output is active
  [][]  
 
-Overfull \vbox (0.4pt too high) has occurred while \output is active [4])
+Overfull \vbox (0.4pt too high) has occurred while \output is active [4</home/a
+knierim/BA/BA_talk/build/quantiles_plot.pdf>])
+(/home/aknierim/BA/BA_talk/content/03_results.tex
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [5</home/a
+knierim/BA/BA_talk/build/ar_vs_eff.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [6</home/a
+knierim/BA/BA_talk/build/metrics_tailcuts.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [7</home/a
+knierim/BA/BA_talk/build/metrics_mars.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [8</home/a
+knierim/BA/BA_talk/build/metrics_fact.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [9</home/a
+knierim/BA/BA_talk/build/metrics_tcc.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [10</home/
+aknierim/BA/BA_talk/build/metrics_baseline.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [11</home/
+aknierim/BA/BA_talk/build/metrics_all.pdf>])
+(/home/aknierim/BA/BA_talk/content/04_conclusions.tex)
 (/home/aknierim/BA/BA_talk/build/presentation.aux))
 (see the transcript file for additional information)
- 1463 words of node memory still in use:
-   29 hlist, 9 vlist, 4 rule, 5 local_par, 36 glue, 6 kern, 14 penalty, 6 glyph
-, 48 attribute, 74 glue_spec, 48 attribute_list, 4 write, 1 pdf_dest, 8 pdf_col
-orstack, 1 pdf_setmatrix, 1 pdf_save, 1 pdf_restore nodes
-   avail lists: 1:13,2:459,3:231,4:235,5:230,6:43,7:1455,8:13,9:453,10:9,11:96
+ 1560 words of node memory still in use:
+   35 hlist, 8 vlist, 5 rule, 5 local_par, 38 glue, 6 kern, 13 penalty, 1 glyph
+, 58 attribute, 74 glue_spec, 58 attribute_list, 10 write, 1 pdf_dest, 8 pdf_co
+lorstack, 2 pdf_setmatrix, 2 pdf_save, 2 pdf_restore nodes
+   avail lists: 1:13,2:445,3:235,4:235,5:234,6:43,7:1466,8:15,9:463,10:9,11:96
+
+warning  (pdf backend): unreferenced destination with name 'Outline0.4'
 </home/aknierim/.local/texlive/2022/texmf-dist/fonts/opentype/public/fira/FiraM
 ono-Regular.otf></home/aknierim/.local/texlive/2022/texmf-dist/fonts/opentype/p
 ublic/fira/FiraMono-Bold.otf></home/aknierim/.local/texlive/2022/texmf-dist/fon
 ts/opentype/public/fira/FiraSans-Light.otf></home/aknierim/.local/texlive/2022/
 texmf-dist/fonts/opentype/public/fira/FiraSans-Medium.otf>
-Output written on presentation.pdf (4 pages, 3763707 bytes).
+Output written on presentation.pdf (11 pages, 1687354 bytes).
 Transcript written on presentation.log.
 Latexmk: Getting log file 'build/presentation.log'
 Latexmk: Examining 'build/presentation.fls'
@@ -1564,7 +1644,7 @@ Overfull \hbox (1.0944pt too wide) has occurred while \output is active
 Overfull \vbox (0.4pt too high) has occurred while \output is active [1{/home/a
 knierim/.local/texlive/2022/texmf-var/fonts/map/pdftex/updmap/pdftex.map}</home
 /aknierim/BA/BA_talk/logos/tu_light.pdf></home/aknierim/BA/BA_talk/graphics/con
-tours_mst.jpg>] (/home/aknierim/BA/BA_talk/build/presentation.toc)
+tours_mst_light.png>] (/home/aknierim/BA/BA_talk/build/presentation.toc)
 Overfull \hbox (1.0944pt too wide) has occurred while \output is active
  [][]  
 
@@ -1578,20 +1658,60 @@ Overfull \vbox (0.4pt too high) has occurred while \output is active [3])
 Overfull \hbox (1.0944pt too wide) has occurred while \output is active
  [][]  
 
-Overfull \vbox (0.4pt too high) has occurred while \output is active [4])
+Overfull \vbox (0.4pt too high) has occurred while \output is active [4</home/a
+knierim/BA/BA_talk/build/quantiles_plot.pdf>])
+(/home/aknierim/BA/BA_talk/content/03_results.tex
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [5</home/a
+knierim/BA/BA_talk/build/ar_vs_eff.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [6</home/a
+knierim/BA/BA_talk/build/metrics_tailcuts.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [7</home/a
+knierim/BA/BA_talk/build/metrics_mars.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [8</home/a
+knierim/BA/BA_talk/build/metrics_fact.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [9</home/a
+knierim/BA/BA_talk/build/metrics_tcc.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [10</home/
+aknierim/BA/BA_talk/build/metrics_baseline.pdf>]
+Overfull \hbox (1.0944pt too wide) has occurred while \output is active
+ [][]  
+
+Overfull \vbox (0.4pt too high) has occurred while \output is active [11</home/
+aknierim/BA/BA_talk/build/metrics_all.pdf>])
+(/home/aknierim/BA/BA_talk/content/04_conclusions.tex)
 (/home/aknierim/BA/BA_talk/build/presentation.aux))
 (see the transcript file for additional information)
- 1463 words of node memory still in use:
-   29 hlist, 9 vlist, 4 rule, 5 local_par, 36 glue, 6 kern, 14 penalty, 6 glyph
-, 48 attribute, 74 glue_spec, 48 attribute_list, 4 write, 1 pdf_dest, 8 pdf_col
-orstack, 1 pdf_setmatrix, 1 pdf_save, 1 pdf_restore nodes
-   avail lists: 1:13,2:459,3:231,4:235,5:230,6:43,7:1455,8:13,9:453,10:9,11:96
+ 1560 words of node memory still in use:
+   35 hlist, 8 vlist, 5 rule, 5 local_par, 38 glue, 6 kern, 13 penalty, 1 glyph
+, 58 attribute, 74 glue_spec, 58 attribute_list, 10 write, 1 pdf_dest, 8 pdf_co
+lorstack, 2 pdf_setmatrix, 2 pdf_save, 2 pdf_restore nodes
+   avail lists: 1:13,2:445,3:235,4:235,5:234,6:43,7:1466,8:15,9:463,10:9,11:96
+
+warning  (pdf backend): unreferenced destination with name 'Outline0.4'
 </home/aknierim/.local/texlive/2022/texmf-dist/fonts/opentype/public/fira/FiraM
 ono-Regular.otf></home/aknierim/.local/texlive/2022/texmf-dist/fonts/opentype/p
 ublic/fira/FiraMono-Bold.otf></home/aknierim/.local/texlive/2022/texmf-dist/fon
 ts/opentype/public/fira/FiraSans-Light.otf></home/aknierim/.local/texlive/2022/
 texmf-dist/fonts/opentype/public/fira/FiraSans-Medium.otf>
-Output written on presentation.pdf (4 pages, 3763707 bytes).
+Output written on presentation.pdf (11 pages, 1687354 bytes).
 Transcript written on presentation.log.
 Latexmk: Getting log file 'build/presentation.log'
 Latexmk: Examining 'build/presentation.fls'

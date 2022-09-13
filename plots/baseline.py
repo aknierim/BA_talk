@@ -1,7 +1,20 @@
+from argparse import ArgumentParser
 import numpy as np
 import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
+
+parser = ArgumentParser()
+
+parser.add_argument('--theme',
+                    default='light',
+                    nargs='?',
+                    choices=['light', 'dark'],
+                    help="""The theme for the plots. Choose from 'light' and 'dark'
+                    \n(default: %(default)s)
+                    """
+)
+
 
 metrics_dict = {
         "TPR": "True Positive Rate",
@@ -222,6 +235,11 @@ def ar_eff():
 
 
 if __name__ == "__main__":
+
+    args = parser.parse_args()
+
+    if args.theme == 'dark':
+        plt.style.use('plots/darkmode.mplstyle')
 
     size = plt.gcf().get_size_inches()
 

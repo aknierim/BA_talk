@@ -1,7 +1,20 @@
+from argparse import ArgumentParser
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import yaml
+
+parser = ArgumentParser()
+
+parser.add_argument('--theme',
+                    default='light',
+                    nargs='?',
+                    choices=['light', 'dark'],
+                    help="""The theme for the plots. Choose from 'light' and 'dark'
+                    \n(default: %(default)s)
+                    """
+)
+
 
 metrics_dict = {
         "TPR": "True Positive Rate",
@@ -113,6 +126,11 @@ def metrics_bar_plot_all(
 
 
 if __name__ == "__main__":
+
+    args = parser.parse_args()
+
+    if args.theme == 'dark':
+        plt.style.use('plots/darkmode.mplstyle')
 
     size = plt.gcf().get_size_inches()
 

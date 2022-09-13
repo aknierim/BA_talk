@@ -41,19 +41,19 @@ TeXOptions = -lualatex \
 
 # plots
 $(ar_eff): plots/angres_aeff.py matplotlibrc | build
-	python -W ignore plots/angres_aeff.py
+	python -W ignore plots/angres_aeff.py --theme dark
 
 $(ar_vs_eff): plots/ar_vs_eff.py matplotlibrc | build
-	python plots/ar_vs_eff.py
+	python plots/ar_vs_eff.py --theme dark
 
 $(quantiles): plots/quantiles_plot.py matplotlibrc | build
-	python plots/quantiles_plot.py
+	python plots/quantiles_plot.py --theme dark
 
 $(metrics): plots/metrics.py matplotlibrc | build
-	python plots/metrics.py
+	python plots/metrics.py --theme dark
 
 $(baseline): plots/baseline.py matplotlibrc | build
-	python -W ignore plots/baseline.py
+	python -W ignore plots/baseline.py --theme dark
 
 # $(fermi4fgl): plots/fermi_catalog.py matplotlibrc | build
 # 	python plots/fermi_catalog.py
@@ -64,23 +64,11 @@ $(tab_writer): thesis_scripts/table_writer.py | build
 
 
 
-all: presentation_light.pdf presentation_dark.pdf # $(PLOTS)
+all: $(PLOTS) presentation_light.pdf presentation_dark.pdf
 
 light: presentation_light.pdf
 
 dark: presentation_dark.pdf
-
-
-plots_light: plots/plot.py matplotlibrc header-matplotlib.tex
-	@echo "Make ${BLUE}$@${RESET}:"
-	@TEXINPUTS="$$(pwd):" python plots/plot.py --theme light
-	@echo
-
-plots_dark: plots/plot.py matplotlibrc header-matplotlib.tex
-	@echo "Make ${BLUE}$@${RESET}:"
-	@TEXINPUTS="$$(pwd):" python plots/plot.py --theme dark
-	@echo
-
 
 .DELETE_ON_ERROR:
 presentation_light.pdf: FORCE | build
