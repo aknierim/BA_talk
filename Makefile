@@ -39,8 +39,10 @@ TeXOptions = -lualatex \
 			 -halt-on-error \
 			 -output-directory=build
 
+all: $(PLOTS) tikz presentation_light.pdf presentation_dark.pdf
+
 # plots
-$(ar_eff): plots/angres_aeff.py matplotlibrc | build
+$(ar_eff): plots/angres_aeff.py matplotlibrc
 	python -W ignore plots/angres_aeff.py --theme dark
 
 $(ar_vs_eff): plots/ar_vs_eff.py matplotlibrc | build
@@ -63,12 +65,9 @@ $(tab_writer): thesis_scripts/table_writer.py | build
 	python thesis_scripts/table_writer.py
 
 
+light: tikz presentation_light.pdf
 
-all: $(PLOTS) presentation_light.pdf presentation_dark.pdf
-
-light: presentation_light.pdf
-
-dark: presentation_dark.pdf
+dark: tikz presentation_dark.pdf
 
 .DELETE_ON_ERROR:
 presentation_light.pdf: FORCE | build
@@ -81,7 +80,7 @@ presentation_dark.pdf: FORCE | build
 	@TEXINPUTS="$$(pwd):" latexmk $(TeXOptions) presentation.tex 1> build/log || cat build/log
 	mv build/presentation.pdf $@
 
-tikz: FORCE tikz/ | build
+tikz: FORCE tikz/*.tex | build
 	@TEXINPUTS="$$(pwd):" latexmk $(TeXOptions) $(TIKZFILES) 1> build/tikz_log || cat build/tikz_log
 	@for name in $(TIKZ_PDFS) ; do \
 		mv build/$$name.pdf graphics/$$name.pdf ; \
@@ -92,7 +91,7 @@ tikz: FORCE tikz/ | build
 FORCE:
 
 build:
-	@mkdir -p build/
+	mkdir -p build/
 
 # simple workaround, else 'all' wouldn't work after 'presentation_light.pdf'
 # (for whatever reason)
