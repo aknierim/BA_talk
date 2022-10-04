@@ -19,11 +19,16 @@ cosmic_flux=build/cosmic_flux.pgf
 crab_ssc=build/crab_ssc.pdf
 array_layout=build/array_layout.pgf
 fermi4fgl=build/fermi_catalog.pdf
-ar_eff=plots/ar_eff.pdf
+ar_eff=build/AR_Aeff_MST_0.10_0.15.pdf build/AR_Aeff_MST_0.15_0.20.pdf build/AR_Aeff_MST_0.20_0.25.pdf \
+	build/AR_Aeff_MST_0.25_0.30.pdf build/AR_Aeff_MST_0.30_0.35.pdf build/AR_Aeff_MST_0.35_0.40.pdf \
+	build/AR_Aeff_MST_0.40_0.45.pdf
+
 ar_vs_eff=build/ar_vs_eff.pdf
 quantiles=build/quantiles_plot.pdf
 metrics=build/metrics.pdf
-baseline=build/baseline.pdf
+baseline=build/metrics_baseline.pdf build/Rel_AR_0.10_0.15_base.pdf build/Rel_AR_0.15_0.20_base.pdf \
+	build/Rel_AR_0.20_0.25_base.pdf	build/Rel_AR_0.25_0.30_base.pdf build/Rel_AR_0.30_0.35_base.pdf \
+	build/Rel_AR_0.35_0.40_base.pdf build/Rel_AR_0.40_0.45_base.pdf
 
 # tables
 tab_writer=build/tables.txt
@@ -42,7 +47,7 @@ TeXOptions = -lualatex \
 all: $(PLOTS) tikz presentation_light.pdf presentation_dark.pdf
 
 # plots
-$(ar_eff): plots/angres_aeff.py matplotlibrc
+$(ar_eff): plots/angres_aeff.py matplotlibrc | build
 	python -W ignore plots/angres_aeff.py --theme dark
 
 $(ar_vs_eff): plots/ar_vs_eff.py matplotlibrc | build
