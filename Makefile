@@ -22,10 +22,10 @@ fermi4fgl=build/fermi_catalog.pdf
 ar_eff=build/AR_Aeff_MST_0.10_0.15.pdf build/AR_Aeff_MST_0.15_0.20.pdf build/AR_Aeff_MST_0.20_0.25.pdf \
 	build/AR_Aeff_MST_0.25_0.30.pdf build/AR_Aeff_MST_0.30_0.35.pdf build/AR_Aeff_MST_0.35_0.40.pdf \
 	build/AR_Aeff_MST_0.40_0.45.pdf
-
 ar_vs_eff=build/ar_vs_eff.pdf
 quantiles=build/quantiles_plot.pdf
-metrics=build/metrics.pdf
+metrics=build/metrics_tailcuts.pdf build/metrics_mars.pdf build/metrics_fact.pdf build/metrics_tcc.pdf \
+	build/metrics_all.pdf
 baseline=build/metrics_baseline.pdf build/Rel_AR_0.10_0.15_base.pdf build/Rel_AR_0.15_0.20_base.pdf \
 	build/Rel_AR_0.20_0.25_base.pdf	build/Rel_AR_0.25_0.30_base.pdf build/Rel_AR_0.30_0.35_base.pdf \
 	build/Rel_AR_0.35_0.40_base.pdf build/Rel_AR_0.40_0.45_base.pdf
@@ -86,6 +86,7 @@ presentation_dark.pdf: FORCE | build
 	mv build/presentation.pdf $@
 
 tikz: FORCE tikz/*.tex | build
+	@echo "Compiling TikZ files..."
 	@TEXINPUTS="$$(pwd):" latexmk $(TeXOptions) $(TIKZFILES) 1> build/tikz_log || cat build/tikz_log
 	@for name in $(TIKZ_PDFS) ; do \
 		mv build/$$name.pdf graphics/$$name.pdf ; \

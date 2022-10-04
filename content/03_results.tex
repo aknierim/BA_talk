@@ -1,27 +1,64 @@
 \section{Results}%
 \label{sec:results}
 
+\begin{frame}{Evaluation Metrics}
+    \begin{minipage}{0.48\textwidth}
+        \begin{align*}
+            \tpr &= \frac{\tp}{\tp + \fn} \\
+            \tnr &= \frac{\tn}{\tn + \fp} \\
+            \fnr &= \frac{\fn}{\fn + \tp} \\
+            \acc &= \frac{\tp + \tn}{\tp + \fp + \tn + \fn} \\
+            \ba &= \frac{\tpr + \tnr}{2}
+        \end{align*}
+    \end{minipage}
+    \begin{minipage}{0.48\textwidth}
+        \ifthenelse{\equal{\theme}{\string 1}}
+            {% use dark theme
+            \begin{table}
+                \centering
+                \begin{tabular}{r l c c}
+                    & & \multicolumn{2}{c}{Prediction} \\
+                    & & positive & negative \\
+                    \parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{Label}}} &  pos. & \colorbox{darkmode!92!white}{True Positive ($\tp$)} & False Negative ($\fn$) \\
+                    & neg. & False Positive ($\fp$) & \colorbox{darkmode!92!white}{True Negative ($\tn$)} \\
+                \end{tabular}
+            \end{table}%
+            }
+            {% use light theme
+            \begin{table}
+                \centering
+                \begin{tabular}{r l c c}
+                    & & \multicolumn{2}{c}{Prediction} \\
+                    & & positive & negative \\
+                    \parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{Label}}} &  pos. & \colorbox{white!92!black}{True Positive ($\tp$)} & False Negative ($\fn$) \\
+                    & neg. & False Positive ($\fp$) & \colorbox{white!92!black}{True Negative ($\tn$)} \\
+                \end{tabular}
+            \end{table}%
+            }
+    \end{minipage}
+\end{frame}
+
 \begin{frame}
     \centering
     \includegraphics[width=0.9\textwidth]{build/ar_vs_eff.pdf}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Metrics: \texttt{TailcutsImageCleaner}}
     \centering
     \includegraphics[width=0.9\textwidth]{build/metrics_tailcuts.pdf}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Metrics: \texttt{MARSImageCleaner}}
     \centering
     \includegraphics[width=0.9\textwidth]{build/metrics_mars.pdf}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Metrics: \texttt{FACTImageCleaner}}
     \centering
     \includegraphics[width=0.9\textwidth]{build/metrics_fact.pdf}
 \end{frame}
 
-\begin{frame}
+\begin{frame}{Metrics: \texttt{TimeConstraintImageCleaner}}
     \centering
     \includegraphics[width=0.9\textwidth]{build/metrics_tcc.pdf}
 \end{frame}
