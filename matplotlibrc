@@ -7,7 +7,7 @@ text.usetex: True
 backend: pgf
 pgf.rcfonts: False
 pgf.texsystem: lualatex
-pgf.preamble: \usepackage{siunitx}\sisetup{per-mode=fraction}\DeclareSIUnit\year{yr}\usepackage{fontspec}\usepackage{nicefrac}\usepackage{amsmath}\usepackage{xspace}\usepackage[xindy,toc]{glossaries}\newcommand{\magic}{MAGIC\xspace}\newcommand{\fact}{FACT\xspace}\newcommand{\hess}{H.E.S.S\xspace}\newcommand{\veritas}{VERITAS\xspace}
+pgf.preamble: \usepackage{siunitx}\sisetup{per-mode=fraction}\DeclareSIUnit\year{yr}\usepackage{fontspec}\usepackage{nicefrac}\usepackage{amsmath}\usepackage{xspace}\usepackage[xindy,toc]{glossaries}\newcommand{\magic}{MAGIC\xspace}
 
 lines.markersize : 3.8
 legend.markerscale   : 1
