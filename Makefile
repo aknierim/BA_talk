@@ -12,7 +12,8 @@ RESET=`tput sgr0`
 
 # TikZ
 TIKZFILES := $(wildcard tikz/*.tex) # list of all TikZ files
-TIKZ_PDFS := $(subst tikz/,,$(TIKZFILES:.tex=)) # get names from TikZ files for .pdf output files
+TIKZ_PDFS := $(subst tikz/,,$(TIKZFILES:.tex=.pdf)) # get names from TikZ files for .pdf output files
+TIKZ := $(addprefix build/tikz/,$(TIKZ_PDFS)) # add build/ to TikZ output files
 
 # plots
 cosmic_flux=build/cosmic_flux.pgf
@@ -44,22 +45,28 @@ TeXOptions = -lualatex \
 			 -halt-on-error \
 			 -output-directory=build
 
-all: $(PLOTS) tikz presentation_light.pdf presentation_dark.pdf
+TikZOptions = -lualatex \
+			  -interaction=nonstopmode \
+			  -halt-on-error \
+			  -output-directory=build/tikz
+
+
+all: $(PLOTS) $(TIKZ) presentation_light.pdf presentation_dark.pdf
 
 # plots
-$(ar_eff): plots/angres_aeff.py matplotlibrc | build
+$(ar_eff): plots/angres_aeff.py matplotlibrc header-matplotlib.tex | build
 	python -W ignore plots/angres_aeff.py --theme dark
 
-$(ar_vs_eff): plots/ar_vs_eff.py matplotlibrc | build
+$(ar_vs_eff): plots/ar_vs_eff.py matplotlibrc header-matplotlib.tex | build
 	python plots/ar_vs_eff.py --theme dark
 
-$(quantiles): plots/quantiles_plot.py matplotlibrc | build
+$(quantiles): plots/quantiles_plot.py matplotlibrc header-matplotlib.tex | build
 	python plots/quantiles_plot.py --theme dark
 
-$(metrics): plots/metrics.py matplotlibrc | build
+$(metrics): plots/metrics.py matplotlibrc header-matplotlib.tex | build
 	python plots/metrics.py --theme dark
 
-$(baseline): plots/baseline.py matplotlibrc | build
+$(baseline): plots/baseline.py matplotlibrc header-matplotlib.tex | build
 	python -W ignore plots/baseline.py --theme dark
 
 # $(fermi4fgl): plots/fermi_catalog.py matplotlibrc | build
@@ -69,10 +76,9 @@ $(baseline): plots/baseline.py matplotlibrc | build
 $(tab_writer): thesis_scripts/table_writer.py | build
 	python thesis_scripts/table_writer.py
 
+light: $(TIKZ) presentation_light.pdf
 
-light: tikz presentation_light.pdf
-
-dark: tikz presentation_dark.pdf
+dark: $(TIKZ) presentation_dark.pdf
 
 .DELETE_ON_ERROR:
 presentation_light.pdf: FORCE | build
@@ -85,13 +91,10 @@ presentation_dark.pdf: FORCE | build
 	@TEXINPUTS="$$(pwd):" latexmk $(TeXOptions) presentation.tex 1> build/log || cat build/log
 	mv build/presentation.pdf $@
 
-tikz: FORCE tikz/*.tex | build
-	@echo "Compiling TikZ files..."
-	@TEXINPUTS="$$(pwd):" latexmk $(TeXOptions) $(TIKZFILES) 1> build/tikz_log || cat build/tikz_log
-	@for name in $(TIKZ_PDFS) ; do \
-		mv build/$$name.pdf graphics/$$name.pdf ; \
-		rm build/$$name.aux build/$$name.fdb_latexmk build/$$name.fls build/$$name.log; \
-	done
+$(TIKZ): $(TIKZFILES) | build/tikz
+	@echo "Compiling TikZ file $(BLUE)$(basename $(notdir $@)).tex$(RESET)"
+	@TEXINPUTS="$$(pwd):" latexmk $(TikZOptions) $(TIKZFILES) 1> \
+		build/tikz/$(basename $(notdir $@))_log || cat build/tikz/$(basename $(notdir $@))_log
 
 
 FORCE:
@@ -99,11 +102,8 @@ FORCE:
 build:
 	mkdir -p build/
 
-# simple workaround, else 'all' wouldn't work after 'presentation_light.pdf'
-# (for whatever reason)
-log:
-	@mkdir -p build
-	@touch build/log
+build/tikz:
+	mkdir -p build/tikz/
 
 clean:
 	@rm -rf build
