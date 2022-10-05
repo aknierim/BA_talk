@@ -1,11 +1,6 @@
 \section{Results}%
 \label{sec:results}
 
-\begin{frame}
-    \centering
-    \includegraphics[width=0.9\textwidth]{build/ar_vs_eff.pdf}
-\end{frame}
-
 \begin{frame}{Evaluation Metrics}
     \begin{minipage}{0.48\textwidth}
         \begin{align*}
@@ -24,8 +19,8 @@
                 \begin{tabular}{r l c c}
                     & & \multicolumn{2}{c}{Prediction} \\
                     & & positive & negative \\
-                    \parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{Label}}} &  pos. & \colorbox{darkacc}{True Positve ($\tp$)} & False Negative ($\fn$) \\
-                    & neg. & False Positive ($\fp$) & \colorbox{darkacc}{True Negative ($\tn$)} \\
+                    \parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{Label}}} &  pos. & \colorbox{darkmode!92!white}{True Positive ($\tp$)} & False Negative ($\fn$) \\
+                    & neg. & False Positive ($\fp$) & \colorbox{darkmode!92!white}{True Negative ($\tn$)} \\
                 \end{tabular}
             \end{table}%
             }
@@ -35,12 +30,17 @@
                 \begin{tabular}{r l c c}
                     & & \multicolumn{2}{c}{Prediction} \\
                     & & positive & negative \\
-                    \parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{Label}}} &  pos. & \colorbox{white!92!black}{True Positve ($\tp$)} & False Negative ($\fn$) \\
+                    \parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{Label}}} &  pos. & \colorbox{white!92!black}{True Positive ($\tp$)} & False Negative ($\fn$) \\
                     & neg. & False Positive ($\fp$) & \colorbox{white!92!black}{True Negative ($\tn$)} \\
                 \end{tabular}
             \end{table}%
             }
     \end{minipage}
+\end{frame}
+
+\begin{frame}
+    \centering
+    \includegraphics[width=0.9\textwidth]{build/ar_vs_eff.pdf}
 \end{frame}
 
 \begin{frame}{Metrics: \texttt{TailcutsImageCleaner}}
@@ -58,7 +58,7 @@
     \includegraphics[width=0.9\textwidth]{build/metrics_fact.pdf}
 \end{frame}
 
-\begin{frame}{Metrics: \texttt{TimeConstrainedImageCleaner}}
+\begin{frame}{Metrics: \texttt{TimeConstraintImageCleaner}}
     \centering
     \includegraphics[width=0.9\textwidth]{build/metrics_tcc.pdf}
 \end{frame}
