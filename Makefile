@@ -41,12 +41,12 @@ TABLES := $(tab_writer)
 
 # LaTeX options to disable interruptions
 TeXOptions = -lualatex \
-			 -interaction=nonstopmode \
+			 -interaction=batchmode \
 			 -halt-on-error \
 			 -output-directory=build
 
 TikZOptions = -lualatex \
-			  -interaction=nonstopmode \
+			  -interaction=batchmode \
 			  -halt-on-error \
 			  -output-directory=build/tikz
 
@@ -110,4 +110,4 @@ clean:
 	@echo ${GREEN}${BOLD}Removing build folder${RESET}
 
 
-.PHONY: all clean
+.PHONY: FORCE all clean

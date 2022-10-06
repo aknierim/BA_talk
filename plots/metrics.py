@@ -55,7 +55,18 @@ def metrics_bar_plot(
     ):
 
     data = pd.read_csv(f'plots/data/metrics/metrics_{cleaner}_MST_MST_NectarCam.csv')
-    unique_ids = data['unique_file_id']
+    efficiency = pd.read_csv('plots/data/combined_table.csv')
+
+    if not cleaner == 'tailcuts':
+        cln = cleaner
+    else:
+        cln = 'tail'
+
+    eff_idx = efficiency[f'index_{cln}']
+    eff_idx = eff_idx.dropna().astype(int)
+    efficiency = efficiency[f'ratio_{cln}'].iloc[eff_idx.index]
+
+
     data = data.drop(columns=["unique_file_id", "tp", "tn", "fp", "fn", "FPR", "PPV"])
     labels = [metrics_dict[k] for k in data.keys()]
     x_ticks = np.arange(len(labels))
@@ -65,14 +76,14 @@ def metrics_bar_plot(
 
     fig, ax = plt.subplots(1, 1, figsize=(size[0]*2, size[1]))
     for idx, alpha in zip(range(len(data)), np.linspace(0.2, 1.0, len(data))):
-        ax.bar(x_ticks + interval[idx]*width, data.iloc[idx], width, color=color, alpha=alpha, label=unique_ids[idx])
+        ax.bar(x_ticks + interval[idx]*width, data.iloc[idx], width, color=color, alpha=alpha, label=f'{efficiency.iloc[idx]:.3f}')
 
     ax.set_xticks(x_ticks)
     ax.set_xticklabels(data.keys())
     ax.set_ylim(0, 1.05)
 
     ax.axhline(1.0, ls="dotted", alpha=0.4, color="black")
-    ax.legend(loc='center left', bbox_to_anchor=(1, 0.5), title="ID")
+    ax.legend(loc='center left', bbox_to_anchor=(1, 0.5), title="Efficiency")
 
     # ax.set_title(rf'\gls{{mst}} Metrics', fontsize=12)
 

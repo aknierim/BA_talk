@@ -22,7 +22,7 @@
 \subtitle{Bachelor thesis talk}
 \author[A.~Knierim]{Anno Knierim} % change to your name
 % \date{month day, year} % uncomment to set specific date
-\institute[E5b]{Astroparticle Physics \\ Department of Physics --- TU Dortmund}
+\institute[E5b]{E5b Astroparticle Physics \\ Department of Physics --- TU Dortmund}
 
 
 \begin{document}
@@ -36,9 +36,95 @@
 \end{frame}
 
 
+% INTRODUCTION
+\section{Scientific Background}%
+\label{sec:introduction}
+
+\begin{frame}
+  \begin{center}
+    \textbf{\huge Scientific Background}\\
+    \begin{tikzpicture}
+      \ifthenelse{\equal{\theme}{\string 1}}
+      {% use dark theme
+      \draw [color=white] (0,0) -- (6,0);
+      \draw [color=tugreen] (0,0) -- (0,0);
+      }
+      {% use light theme
+      \draw [color=darkgray] (0,0) -- (6,0);
+      \draw [color=tugreen] (0,0) -- (0,0);
+      }
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
 \input{content/01_introduction.tex}
+
+
+% DATA PROCESSING
+\section{Data Processing with \texorpdfstring{\texttt{ctapipe}}{ctapipe}}%
+\label{sec:data_processing}
+
+\begin{frame}
+  \begin{center}
+    \textbf{\huge Data Processing with \texttt{ctapipe}}\\
+    \begin{tikzpicture}
+      \ifthenelse{\equal{\theme}{\string 1}}
+      {% use dark theme
+      \draw [color=white] (0,0) -- (6,0);
+      \draw [color=tugreen] (0,0) -- (2,0);
+      }
+      {% use light theme
+      \draw [color=darkgray] (0,0) -- (6,0);
+      \draw [color=tugreen] (0,0) -- (2,0);
+      }
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
 \input{content/02_data_processing.tex}
+
+
+% RESULTS
+\section{Results}%
+\label{sec:results}
+
+\begin{frame}
+  \begin{center}
+    \textbf{\huge Results}\\
+    \begin{tikzpicture}
+      \ifthenelse{\equal{\theme}{\string 1}}
+      {% use dark theme
+      \draw [color=white] (0,0) -- (6,0);
+      \draw [color=tugreen] (0,0) -- (4,0);
+      }
+      {% use light theme
+      \draw [color=darkgray] (0,0) -- (6,0);
+      \draw [color=tugreen] (0,0) -- (4,0);
+      }
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
 \input{content/03_results.tex}
+
+
+% CONCLUSION
+\section{Conclusions and Outlook}%
+\label{sec:conclusions}
+
+\begin{frame}
+  \begin{center}
+    \textbf{\huge Conclusions and Outlook}\\
+    \begin{tikzpicture}
+      \ifthenelse{\equal{\theme}{\string 1}}
+      {% use dark theme
+      \draw [color=white] (0,0) -- (6,0);
+      \draw [color=tugreen] (0,0) -- (6,0);
+      }
+      {% use light theme
+      \draw [color=darkgray] (0,0) -- (6,0);
+      \draw [color=tugreen] (0,0) -- (6,0);
+      }
+    \end{tikzpicture}
+  \end{center}
+\end{frame}
 \input{content/04_conclusions.tex}
 
 
