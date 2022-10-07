@@ -32,7 +32,13 @@
 \begin{frame}{Table of contents}
   \tableofcontents
   \vfill
-  \blfootnote{Title Image Credit: K.~Br\"{u}gge}
+  \ifthenelse{\equal{\theme}{\string 1}}
+  {% use dark theme
+  \footnote{\textcolor{white!85!black}{Title Image Credit: K.~Br\"{u}gge}}
+  }
+  {% use light theme
+  \footnote{\textcolor{darkgray!85!black}{Title Image Credit: K.~Br\"{u}gge}}
+  }
 \end{frame}
 
 

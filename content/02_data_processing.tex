@@ -23,6 +23,15 @@
 
 \end{frame}
 
+\ifthenelse{\equal{\theme}{\string 1}}
+    {% use dark theme
+    \input{content/cleaner_steps_dark.tex}
+    }
+    {% use light theme
+    \input{content/cleaner_steps_light.tex}
+    }
+
+
 \begin{frame}
     \centering
     \includegraphics[width=0.9\textwidth]{build/quantiles_plot.pdf}

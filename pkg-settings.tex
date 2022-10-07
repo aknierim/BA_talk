@@ -15,6 +15,7 @@
   range-phrase = \text{--},
 }
 \DeclareSIUnit\crab{Crab}
+\DeclareSIUnit\pe{p.e.}
 
 % tikz settings
 \usetikzlibrary{overlay-beamer-styles,calc,tikzmark,decorations.pathreplacing}
@@ -68,11 +69,28 @@
 \NewDocumentCommand \auc {} {\gls{auc}}
 
 
-% from https://tex.stackexchange.com/a/544121
-\newcommand\blfootnote[1]{%
-    \bgroup
-    \renewcommand\thefootnote{\fnsymbol{footnote}}%
-    \renewcommand\thempfootnote{\fnsymbol{mpfootnote}}%
-    \footnotetext[0]{#1}%
-    \egroup
+% % from https://tex.stackexchange.com/a/544121
+% \newcommand\blfootnote[1]{%
+%     \bgroup
+%     \renewcommand\thefootnote{\fnsymbol{footnote}}%
+%     \renewcommand\thempfootnote{\fnsymbol{mpfootnote}}%
+%     \footnotetext[0]{#1}%
+%     \egroup
+% }
+
+
+% remove footnote marks
+\makeatletter
+\def\@makefnmark{}
+\makeatletter
+
+\setbeamertemplate{footnote}{%
+  \parindent 1em\noindent
+  \raggedright
+  \insertfootnotetext\par
+}
+
+
+\newcommand{\code}[2]{%
+  \texttt{\textcolor{#1}{\detokenize{#2}}}%
 }

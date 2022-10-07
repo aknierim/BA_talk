@@ -109,5 +109,10 @@ clean:
 	@rm -rf build
 	@echo ${GREEN}${BOLD}Removing build folder${RESET}
 
+# remove LaTeX auxiliary files from build/
+clean_tex:
+	@rm -rf build/*.aux build/*.log build/*.out build/*.toc build/*.bbl build/*.blg build/*.fdb_latexmk build/*.fls build/*.synctex.gz
+	@echo ${GREEN}${BOLD}Removing LaTeX auxiliary files${RESET}
+
 
 .PHONY: FORCE all clean
