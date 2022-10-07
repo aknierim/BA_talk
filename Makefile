@@ -41,12 +41,12 @@ TABLES := $(tab_writer)
 
 # LaTeX options to disable interruptions
 TeXOptions = -lualatex \
-			 -interaction=batchmode \
+			 -interaction=nonstopmode \
 			 -halt-on-error \
 			 -output-directory=build
 
 TikZOptions = -lualatex \
-			  -interaction=batchmode \
+			  -interaction=nonstopmode \
 			  -halt-on-error \
 			  -output-directory=build/tikz
 
@@ -55,19 +55,19 @@ all: $(PLOTS) $(TIKZ) presentation_light.pdf presentation_dark.pdf
 
 # plots
 $(ar_eff): plots/angres_aeff.py matplotlibrc header-matplotlib.tex | build
-	python -W ignore plots/angres_aeff.py --theme dark
+	TEXINPUTS=$$(pwd): python -W ignore plots/angres_aeff.py --theme dark
 
 $(ar_vs_eff): plots/ar_vs_eff.py matplotlibrc header-matplotlib.tex | build
-	python plots/ar_vs_eff.py --theme dark
+	TEXINPUTS=$$(pwd): python plots/ar_vs_eff.py --theme dark
 
 $(quantiles): plots/quantiles_plot.py matplotlibrc header-matplotlib.tex | build
-	python plots/quantiles_plot.py --theme dark
+	TEXINPUTS=$$(pwd): python plots/quantiles_plot.py --theme dark
 
 $(metrics): plots/metrics.py matplotlibrc header-matplotlib.tex | build
-	python plots/metrics.py --theme dark
+	TEXINPUTS=$$(pwd): python plots/metrics.py --theme dark
 
 $(baseline): plots/baseline.py matplotlibrc header-matplotlib.tex | build
-	python -W ignore plots/baseline.py --theme dark
+	TEXINPUTS=$$(pwd): python -W ignore plots/baseline.py --theme dark
 
 # $(fermi4fgl): plots/fermi_catalog.py matplotlibrc | build
 # 	python plots/fermi_catalog.py

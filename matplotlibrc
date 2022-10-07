@@ -1,13 +1,13 @@
 # from http://www.huyng.com/posts/sane-color-scheme-for-matplotlib/
+backend: pgf
 
 font.family: serif
 font.size: 14.0
 
-text.usetex: True
-backend: pgf
 pgf.rcfonts: False
+text.usetex: True
 pgf.texsystem: lualatex
-pgf.preamble: \usepackage{siunitx}\sisetup{per-mode=fraction}\DeclareSIUnit\year{yr}\usepackage{fontspec}\usepackage{nicefrac}\usepackage{amsmath}\usepackage{xspace}\usepackage[xindy,toc]{glossaries}\newcommand{\magic}{MAGIC\xspace}
+pgf.preamble: \input{header-matplotlib.tex}
 
 lines.markersize : 3.8
 legend.markerscale   : 1
