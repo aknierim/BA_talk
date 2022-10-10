@@ -34,6 +34,13 @@
     \input{content/cleaner_steps_light.tex}
     }
 \begin{frame}
+    \ifthenelse{\equal{\theme}{\string 1}}
+    {% use dark theme
     \centering
-    \includegraphics[width=0.9\textwidth]{build/quantiles_plot.pdf}
+    \includegraphics[width=0.9\textwidth]{build/quantiles_plot_dark.pdf}
+    }
+    {% use light theme
+    \centering
+    \includegraphics[width=0.9\textwidth]{build/quantiles_plot_light.pdf}
+    }
 \end{frame}
