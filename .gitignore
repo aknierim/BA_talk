@@ -16,6 +16,9 @@
 *.hdf5
 *.h5
 
+# Ignore vim files
+nvim.appimage
+
 ## Intermediate documents:
 *.dvi
 *.xdv
