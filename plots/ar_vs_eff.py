@@ -50,4 +50,4 @@ ax.set_ylabel(r"Mean Angular Resolution$\,\, / \,\, \mathrm{deg}$", fontsize=12)
 
 ax.legend()
 
-plt.savefig("build/ar_vs_eff.pdf")
+plt.savefig(f"build/ar_vs_eff_{args.theme}.pdf")

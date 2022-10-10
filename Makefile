@@ -18,17 +18,22 @@ TIKZ := $(addprefix build/tikz/,$(TIKZ_PDFS)) # add build/ to TikZ output files
 # plots
 ar_eff=build/AR_Aeff_MST_0.10_0.15_dark.pdf build/AR_Aeff_MST_0.15_0.20_dark.pdf build/AR_Aeff_MST_0.20_0.25_dark.pdf \
 	build/AR_Aeff_MST_0.25_0.30_dark.pdf build/AR_Aeff_MST_0.30_0.35_dark.pdf build/AR_Aeff_MST_0.35_0.40_dark.pdf \
-	build/AR_Aeff_MST_0.40_0.45_dark.pdf build/AR_Aeff_MST_0.10_0.15_light.pdf build/AR_Aeff_MST_0.15_0.20_light.pdf \
+	build/AR_Aeff_MST_0.40_0.45_dark.pdf
+ar_eff_light=build/AR_Aeff_MST_0.10_0.15_light.pdf build/AR_Aeff_MST_0.15_0.20_light.pdf \
 	build/AR_Aeff_MST_0.20_0.25_light.pdf build/AR_Aeff_MST_0.25_0.30_light.pdf build/AR_Aeff_MST_0.30_0.35_light.pdf \
 	build/AR_Aeff_MST_0.35_0.40_light.pdf build/AR_Aeff_MST_0.40_0.45_light.pdf
-ar_vs_eff=build/ar_vs_eff_dark.pdf build/ar_vs_eff_light.pdf
-quantiles=build/quantiles_plot_dark.pdf build/quantiles_plot_light.pdf
+ar_vs_eff=build/ar_vs_eff_dark.pdf
+ar_vs_eff_light=build/ar_vs_eff_light.pdf
+quantiles=build/quantiles_plot_dark.pdf
+quantiles_light=build/quantiles_plot_light.pdf
 metrics=build/metrics_tailcuts_dark.pdf build/metrics_mars_dark.pdf build/metrics_fact_dark.pdf build/metrics_tcc_dark.pdf \
-	build/metrics_all_dark.pdf build/metrics_tailcuts_light.pdf build/metrics_mars_light.pdf build/metrics_fact_light.pdf \
+	build/metrics_all_dark.pdf
+metrics_light=build/metrics_tailcuts_light.pdf build/metrics_mars_light.pdf build/metrics_fact_light.pdf \
 	build/metrics_tcc_light.pdf build/metrics_all_light.pdf
 baseline=build/metrics_baseline_dark.pdf build/Rel_AR_0.10_0.15_base_dark.pdf build/Rel_AR_0.15_0.20_base_dark.pdf \
 	build/Rel_AR_0.20_0.25_base_dark.pdf build/Rel_AR_0.25_0.30_base_dark.pdf build/Rel_AR_0.30_0.35_base_dark.pdf \
-	build/Rel_AR_0.35_0.40_base_dark.pdf build/Rel_AR_0.40_0.45_base_dark.pdf build/metrics_baseline_light.pdf \
+	build/Rel_AR_0.35_0.40_base_dark.pdf build/Rel_AR_0.40_0.45_base_dark.pdf
+baseline_light=build/metrics_baseline_light.pdf \
 	build/Rel_AR_0.10_0.15_base_light.pdf build/Rel_AR_0.15_0.20_base_light.pdf build/Rel_AR_0.20_0.25_base_light.pdf \
 	build/Rel_AR_0.25_0.30_base_light.pdf build/Rel_AR_0.30_0.35_base_light.pdf build/Rel_AR_0.35_0.40_base_light.pdf \
 	build/Rel_AR_0.40_0.45_base_light.pdf
@@ -36,8 +41,10 @@ baseline=build/metrics_baseline_dark.pdf build/Rel_AR_0.10_0.15_base_dark.pdf bu
 # tables
 tab_writer=build/tables.txt
 
+PLOTS := $(ar_eff) $(ar_vs_eff) $(metrics) $(baseline) $(quantiles)
 
-PLOTS := $(ar_eff) $(ar_vs_eff) $(metrics) $(baseline) $(quantiles) # $(fermi4fgl)
+PLOTS_LIGHT := $(ar_eff_light) $(ar_vs_eff_light) $(metrics_light) $(baseline_light) $(quantiles_light)
+
 TABLES := $(tab_writer)
 
 
@@ -53,24 +60,39 @@ TikZOptions = -lualatex \
 			  -output-directory=build/tikz
 
 
-all: $(PLOTS) $(TIKZ) presentation_light.pdf presentation_dark.pdf
+all: $(PLOTS_LIGHT) $(PLOTS) $(TIKZ) presentation_light.pdf presentation_dark.pdf
 
 
 # plots
 $(ar_eff): plots/angres_aeff.py matplotlibrc header-matplotlib.tex | build
 	TEXINPUTS=$$(pwd): python -W ignore plots/angres_aeff.py --theme dark
 
+$(ar_eff_light): plots/angres_aeff.py matplotlibrc header-matplotlib.tex | build
+	TEXINPUTS=$$(pwd): python -W ignore plots/angres_aeff.py --theme light
+
 $(ar_vs_eff): plots/ar_vs_eff.py matplotlibrc header-matplotlib.tex | build
 	TEXINPUTS=$$(pwd): python plots/ar_vs_eff.py --theme dark
+
+$(ar_vs_eff_light): plots/ar_vs_eff.py matplotlibrc header-matplotlib.tex | build
+	TEXINPUTS=$$(pwd): python plots/ar_vs_eff.py --theme light
 
 $(quantiles): plots/quantiles_plot.py matplotlibrc header-matplotlib.tex | build
 	TEXINPUTS=$$(pwd): python plots/quantiles_plot.py --theme dark
 
+$(quantiles_light): plots/quantiles_plot.py matplotlibrc header-matplotlib.tex | build
+	TEXINPUTS=$$(pwd): python plots/quantiles_plot.py --theme light
+
 $(metrics): plots/metrics.py matplotlibrc header-matplotlib.tex | build
 	TEXINPUTS=$$(pwd): python plots/metrics.py --theme dark
 
+$(metrics_light): plots/metrics.py matplotlibrc header-matplotlib.tex | build
+	TEXINPUTS=$$(pwd): python plots/metrics.py --theme light
+
 $(baseline): plots/baseline.py matplotlibrc header-matplotlib.tex | build
 	TEXINPUTS=$$(pwd): python -W ignore plots/baseline.py --theme dark
+
+$(baseline_light): plots/baseline.py matplotlibrc header-matplotlib.tex | build
+	TEXINPUTS=$$(pwd): python -W ignore plots/baseline.py --theme light
 
 # tables
 $(tab_writer): thesis_scripts/table_writer.py | build
@@ -116,4 +138,4 @@ clean_tex:
 	@echo ${GREEN}${BOLD}Removing LaTeX auxiliary files${RESET}
 
 
-.PHONY: FORCE all clean
+.PHONY: FORCE all clean clean_tex
