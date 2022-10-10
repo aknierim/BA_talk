@@ -76,7 +76,7 @@ def metrics_bar_plot_all(
 
     # ax.set_title(rf'\gls{{mst}} Metrics', fontsize=12)
 
-    plt.savefig(f"build/metrics_baseline.pdf", bbox_inches='tight', dpi=300)
+    plt.savefig(f"build/metrics_baseline_{args.theme}.pdf", bbox_inches='tight', dpi=300)
     plt.close()
 
 
@@ -230,7 +230,7 @@ def ar_eff():
 
             # fig.suptitle(rf"${nlower:.2f} \leq \mathrm{{Efficiency}} < {nupper:.2f}$")
 
-            plt.savefig(f'build/Rel_AR_{nlower:.2f}_{nupper:.2f}_base.pdf')
+            plt.savefig(f'build/Rel_AR_{nlower:.2f}_{nupper:.2f}_base_{args.theme}.pdf')
             plt.close()
 
 

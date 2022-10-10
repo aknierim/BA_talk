@@ -1,0 +1,50 @@
+\begin{frame}{On the limitations of this work}
+    \begin{itemize}
+        \item Only MST data was used so far \rightarrow{} Optimize parameters using LST data also
+        \begin{itemize}
+            \item [\rightarrow] Another grid search only for LST data is necessary
+        \end{itemize}
+        \setlength\itemsep{1em}
+        \item Efficiency was prioritized over angular resolution due to more statistics
+        \begin{itemize}
+            \item [\rightarrow] Another user might want a better angular resolution instead
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[label=summary]{Conclusions and Outlook}
+    \begin{columns}
+        \begin{column}{0.48\textwidth}
+            \todo[inline]{Scale images on the right hand side}
+            \begin{itemize}
+                \setlength\itemsep{2em}
+                \item The hyperparameters found in this work improved the performance of the algorithms
+                \begin{itemize}
+                    \item [\rightarrow] All algorithms have better efficiency and angular resolution compared to the default settings
+                \end{itemize}
+                \item The \texttt{FACTImageCleaner} is the best performing algorithm, but \texttt{TCC} improved the most
+                \item Prioritizing efficiency over angular resolution resulted in better metrics for all algorithms
+                \item [\rightarrow] Further analysis and a broader grid search may still lead to even better-suited hyperparameters
+                \begin{itemize}
+                    \item [\rightarrow] This work can be used as a starting point for further optimization (also for LST data)
+                \end{itemize}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \begin{tikzpicture}
+                \ifthenelse{\equal{\theme}{\string 1}}
+                {% use dark theme
+                \roundpic[xshift=0cm,yshift=0, fill=darkmode]{7.8cm}{8cm}{build/metrics_baseline_dark.pdf}{5}{2.3}{metrics_baseline}
+                \roundpic[xshift=-.1cm,yshift=-.2cm, fill=darkmode]{3.8cm}{3cm}{build/AR_Aeff_MST_0.40_0.45_dark.pdf}{0}{3.5}{rel_AR}
+                \roundpic[xshift=0cm,yshift=0, fill=darkmode]{3cm}{2.5cm}{build/Rel_AR_0.40_0.45_base_dark.pdf}{2}{1}{ar_eff}
+                }
+                {% use light theme
+                \roundpic[xshift=0cm,yshift=0, fill=white]{7.8cm}{8cm}{build/metrics_baseline_light.pdf}{5}{2.3}{metrics_baseline}
+                \roundpic[xshift=-.1cm,yshift=-.2cm, fill=white]{3.8cm}{3cm}{build/AR_Aeff_MST_0.40_0.45_light.pdf}{0}{3.5}{rel_AR}
+                \roundpic[xshift=0cm,yshift=0, fill=white]{3cm}{2.5cm}{build/Rel_AR_0.40_0.45_base_light.pdf}{2}{1}{ar_eff}
+                }
+            \end{tikzpicture}
+
+        \end{column}
+    \end{columns}
+\end{frame}

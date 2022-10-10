@@ -1,3 +1,30 @@
+\subsection{Efficiency and Angular Resolution}%
+\label{sub:Efficiency_AR}
+
+\begin{frame}{Efficiency and Angular Resolution}
+    \begin{equation*}
+        \eff = \frac{n_\text{reco}}{n_\text{total}}
+    \end{equation*}
+    \begin{columns}
+        \begin{column}{0.48\textwidth}
+            \centering
+            \includegraphics[height=0.8\textheight]{build/AR_Aeff_MST_0.10_0.15_dark.pdf}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \centering
+            \includegraphics[height=0.8\textheight]{build/AR_Aeff_MST_0.40_0.45_dark.pdf}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Efficiency vs. Angular Resolution}
+    \centering
+    \includegraphics[width=0.75\textwidth]{build/ar_vs_eff_dark.pdf}
+\end{frame}
+
+\subsection{Metrics}%
+\label{sub:Metrics}
+
 \begin{frame}{Evaluation Metrics}
     \begin{minipage}{0.48\textwidth}
         \begin{align*}
@@ -35,39 +62,56 @@
     \end{minipage}
 \end{frame}
 
-\begin{frame}
-    \centering
-    \includegraphics[width=0.9\textwidth]{build/ar_vs_eff.pdf}
-\end{frame}
-
 \begin{frame}{Metrics: \texttt{TailcutsImageCleaner}}
     \centering
-    \includegraphics[width=0.9\textwidth]{build/metrics_tailcuts.pdf}
+    \includegraphics[width=0.9\textwidth]{build/metrics_tailcuts_dark.pdf}
 \end{frame}
 
 \begin{frame}{Metrics: \texttt{MARSImageCleaner}}
     \centering
-    \includegraphics[width=0.9\textwidth]{build/metrics_mars.pdf}
+    \includegraphics[width=0.9\textwidth]{build/metrics_mars_dark.pdf}
 \end{frame}
 
 \begin{frame}{Metrics: \texttt{FACTImageCleaner}}
-    \vspace{-0.28cm}
+    \vspace{-0.355cm}
     \centering
-    \includegraphics[width=0.9\textwidth]{build/metrics_fact.pdf}
+    \includegraphics[width=0.9\textwidth]{build/metrics_fact_dark.pdf}
 \end{frame}
 
 \begin{frame}{Metrics: \texttt{TimeConstraintImageCleaner}}
-    \vspace{-0.1cm}
+    \vspace{-0.15cm}
     \centering
-    \includegraphics[width=0.9\textwidth]{build/metrics_tcc.pdf}
+    \includegraphics[width=0.9\textwidth]{build/metrics_tcc_dark.pdf}
 \end{frame}
 
 \begin{frame}{Performance Compared to the Default Settings}
     \centering
-    \includegraphics[width=0.9\textwidth]{build/metrics_baseline.pdf}
+    \includegraphics[width=0.9\textwidth]{build/metrics_baseline_dark.pdf}
 \end{frame}
 
 \begin{frame}{Comparison of the Cleaning Algorithms}
     \centering
-    \includegraphics[width=0.9\textwidth]{build/metrics_all.pdf}
+    \includegraphics[width=0.9\textwidth]{build/metrics_all_dark.pdf}
+\end{frame}
+
+\subsection{This Work's Hyperparameters}%
+\label{sub:Hyperparameters_thesis}
+
+\begin{frame}{This Work's Hyperparameters}
+    \begin{table}
+        \centering
+        \rowcolors{0}{darkmode!92!white}{}
+        \begin{tabular}{c S[table-format=1.3] S[table-format=1.3] S[table-format=1.0]
+            S[table-format=2.1] S[table-format=2.1] S[table-format=2.1]}
+            \hiderowcolors%
+            {Cleaning Algorithm} & {\(Q_c \;/\; \si{\pe}\)} & {\(Q_b \;/\; \si{\pe}\)} & {Min. Neigh.} &
+            {\(t \;/\; \si{\nano\second}\)} & {\(t_c \;/\; \si{\nano\second}\)} & {\(t_b \;/\; \si{\nano\second}\)} \\
+            \addlinespace[0.5em]
+            \showrowcolors%
+            Tailcuts & 6.700 & 1.675 & 1 &      &      &      \\
+            MARS     & 5.500 & 1.833 & 2 &      &      &      \\
+            FACT     & 4.200 & 1.400 & 2 &  6.0 &      &      \\
+            TCC      & 6.700 & 1.675 & 1 &      & 15.0 &  9.0 \\
+        \end{tabular}
+    \end{table}
 \end{frame}

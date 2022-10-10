@@ -60,4 +60,4 @@ ax.set_yscale('log')
 ax.set_xlabel('Pixel Value / p.e.')
 ax.set_ylabel('Pixel Counts')
 
-plt.savefig(f"build/quantiles_plot.pdf", dpi=300, bbox_inches='tight')
+plt.savefig(f"build/quantiles_plot_{args.theme}.pdf", dpi=300, bbox_inches='tight')

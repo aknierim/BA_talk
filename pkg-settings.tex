@@ -31,6 +31,7 @@
 % Usage:
 % \roundpic[<optional arguments>, eg. xshift or yshift]\
 % {<radius of the cirlce [cm]>}{<picture width [cm]>}{<path_to_picture>}{x pos}{y pos}{label}
+% TO BE PUT INSIDE TIKZ ENVIRONMENT (i.e. \begin{tikzpicture} \roundpic... \end{tikzpicture})
 \newcommand{\roundpic}[7][]{%
   \ifempty{#7}
     \node [circle, draw, color=tugreen, minimum width = #2,
@@ -65,8 +66,10 @@
 \DeclareMathOperator{\acc}{ACC}
 \DeclareMathOperator{\ba}{BA}
 \DeclareMathOperator{\eff}{Eff}
-\NewDocumentCommand \roc {} {\gls{roc}}
-\NewDocumentCommand \auc {} {\gls{auc}}
+
+\NewDocumentCommand \eg {} {e.\,g.\ }
+\NewDocumentCommand \ie {} {i.\,e.\ }
+
 
 
 % % from https://tex.stackexchange.com/a/544121
@@ -94,3 +97,6 @@
 \newcommand{\code}[2]{%
   \texttt{\textcolor{#1}{\detokenize{#2}}}%
 }
+
+
+\setlength\itemsep{0.5cm}

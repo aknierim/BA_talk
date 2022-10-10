@@ -167,7 +167,7 @@ def main():
 
             fig.suptitle(rf"${nlower:.2f} \leq \mathrm{{Efficiency}} < {nupper:.2f}$")
 
-            plt.savefig(f'build/AR_Aeff_MST_{nlower:.2f}_{nupper:.2f}.pdf')
+            plt.savefig(f'build/AR_Aeff_MST_{nlower:.2f}_{nupper:.2f}_{args.theme}.pdf')
             plt.close()
 
 
@@ -185,7 +185,7 @@ if __name__ == "__main__":
     fig, ax, ax2 = plot_combined([101, 13, 974, 1954])
     ax2.set_ylim(1e-2, 1)
     fig.suptitle(r"$0.40 \leq \mathrm{Efficiency} < 0.45$")
-    plt.savefig(f'build/AR_Aeff_MST_0.40_0.45.pdf')
+    plt.savefig(f'build/AR_Aeff_MST_0.40_0.45_{args.theme}.pdf')
 
     # fig, ax, ax2 = plot_combined([118, 54, 767, 367])
     # fig.suptitle(r"$0.10 \leq \mathrm{Efficiency} < 0.15$")

@@ -46,4 +46,4 @@ ax2.set_ylabel("Surviving Photons / True Photons", fontsize=10)
 # ax.set_xlabel("Efficiency")
 ax2.set_xlabel("Efficiency")
 
-plt.savefig("build/surv.pdf", bbox_inches="tight")
+plt.savefig(f"build/surv_{args.theme}.pdf", bbox_inches="tight")

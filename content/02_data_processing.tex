@@ -2,11 +2,15 @@
     \ifthenelse{\equal{\theme}{\string 1}}
     {% use dark theme
     \centering
-    \includegraphics[height=0.95\textheight]{graphics/ctapipe_light.pdf}
+    \includegraphics[height=0.9\textheight]{graphics/ctapipe_light.pdf}
+    \vspace{-0.25cm}
+    \footnote{\textcolor{white!85!black}{Adapted from J.~Hackfeld and M.~Linhoff}}
     }
     {% use light theme
     \centering
-    \includegraphics[height=0.95\textheight]{graphics/ctapipe.png}
+    \includegraphics[height=0.9\textheight]{graphics/ctapipe.png}
+    \vspace{-0.25cm}
+    \footnote{\textcolor{darkgray!85!black}{Adapted from J.~Hackfeld and M.~Linhoff}}
     }
 \end{frame}
 
@@ -20,8 +24,10 @@
     \centering
     \includegraphics[width=\textwidth]{build/tikz/data_pipeline.pdf}
     }
-
 \end{frame}
+
+\subsection{Cleaning Algorithms}%
+\label{sub:Cleaning_algorithms}
 
 \ifthenelse{\equal{\theme}{\string 1}}
     {% use dark theme
@@ -31,8 +37,27 @@
     \input{content/cleaner_steps_light.tex}
     }
 
-
-\begin{frame}
-    \centering
-    \includegraphics[width=0.9\textwidth]{build/quantiles_plot.pdf}
+\subsection{Hyperparameters}%
+\label{sub:Hyperparameters}
+\begin{frame}{Selecting reasonable hyperparameters for the grid search}
+    \todo[inline]{might need to think more about the layout of this slide}
+    \begin{overlayarea}{\textwidth}{\textheight}
+        \begin{itemize}
+            \item<1-> Begin by calculating core thresholds from quantiles for a given telescope type
+            \item<3-> Select the boundary thresholds as ratios of the core thresholds (\eg 0.25, 0.33, 0.5\dots)
+            \item<4-> Select feasible values for the number of neighbors (\eg 0, 1, 2, 3,\dots)
+            \item<5-> Set reasonable time limits for the time-based algorithms
+        \end{itemize}
+        \only<2>{
+            \ifthenelse{\equal{\theme}{\string 1}}
+            {% use dark theme
+            \centering
+            \includegraphics[width=0.9\textwidth]{build/quantiles_plot_dark.pdf}
+            }
+            {% use light theme
+            \centering
+            \includegraphics[width=0.9\textwidth]{build/quantiles_plot_light.pdf}
+            }
+        }
+    \end{overlayarea}
 \end{frame}

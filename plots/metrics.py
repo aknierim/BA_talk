@@ -87,7 +87,7 @@ def metrics_bar_plot(
 
     # ax.set_title(rf'\gls{{mst}} Metrics', fontsize=12)
 
-    plt.savefig(f"build/metrics_{cleaner}.pdf", bbox_inches='tight', dpi=300)
+    plt.savefig(f"build/metrics_{cleaner}_{args.theme}.pdf", bbox_inches='tight', dpi=300)
     plt.close()
 
 
@@ -131,7 +131,7 @@ def metrics_bar_plot_all(
 
     # ax.set_title(rf'\gls{{mst}} Metrics', fontsize=12)
 
-    plt.savefig(f"build/metrics_all.pdf", bbox_inches='tight', dpi=300)
+    plt.savefig(f"build/metrics_all_{args.theme}.pdf", bbox_inches='tight', dpi=300)
     plt.close()
 
 
