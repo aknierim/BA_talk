@@ -140,5 +140,5 @@ clean_tex:
 
 .PHONY: FORCE all clean clean_tex
 
-build/tikz/iact.pdf: FORCE | build/tikz
-	@TEXINPUTS=$$(pwd): latexmk $(TeXOptions) -pvc tikz/iact.tex 1> build/log || cat build/log
+# build/tikz/iact.pdf: FORCE | build/tikz
+# 	@TEXINPUTS=$$(pwd): latexmk $(TikZOptions) tikz/iact.tex 1> build/log || cat build/log
