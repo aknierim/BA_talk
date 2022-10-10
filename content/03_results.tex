@@ -22,6 +22,9 @@
     \includegraphics[width=0.75\textwidth]{build/ar_vs_eff_dark.pdf}
 \end{frame}
 
+\subsection{Metrics}%
+\label{sub:Metrics}
+
 \begin{frame}{Evaluation Metrics}
     \begin{minipage}{0.48\textwidth}
         \begin{align*}
@@ -89,4 +92,26 @@
 \begin{frame}{Comparison of the Cleaning Algorithms}
     \centering
     \includegraphics[width=0.9\textwidth]{build/metrics_all_dark.pdf}
+\end{frame}
+
+\subsection{This Work's Hyperparameters}%
+\label{sub:Hyperparameters_thesis}
+
+\begin{frame}{This Work's Hyperparameters}
+    \begin{table}
+        \centering
+        \rowcolors{0}{darkmode!92!white}{}
+        \begin{tabular}{c S[table-format=1.3] S[table-format=1.3] S[table-format=1.0]
+            S[table-format=2.1] S[table-format=2.1] S[table-format=2.1]}
+            \hiderowcolors%
+            {Cleaning Algorithm} & {\(Q_c \;/\; \si{\pe}\)} & {\(Q_b \;/\; \si{\pe}\)} & {Min. Neigh.} &
+            {\(t \;/\; \si{\nano\second}\)} & {\(t_c \;/\; \si{\nano\second}\)} & {\(t_b \;/\; \si{\nano\second}\)} \\
+            \addlinespace[0.5em]
+            \showrowcolors%
+            Tailcuts & 6.700 & 1.675 & 1 &      &      &      \\
+            MARS     & 5.500 & 1.833 & 2 &      &      &      \\
+            FACT     & 4.200 & 1.400 & 2 &  6.0 &      &      \\
+            TCC      & 6.700 & 1.675 & 1 &      & 15.0 &  9.0 \\
+        \end{tabular}
+    \end{table}
 \end{frame}
