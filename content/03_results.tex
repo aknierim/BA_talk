@@ -1,3 +1,27 @@
+\subsection{Efficiency and Angular Resolution}%
+\label{sub:Efficiency_AR}
+
+\begin{frame}{Efficiency and Angular Resolution}
+    \begin{equation*}
+        \eff = \frac{n_\text{reco}}{n_\text{total}}
+    \end{equation*}
+    \begin{columns}
+        \begin{column}{0.48\textwidth}
+            \centering
+            \includegraphics[height=0.8\textheight]{build/AR_Aeff_MST_0.10_0.15.pdf}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+            \centering
+            \includegraphics[height=0.8\textheight]{build/AR_Aeff_MST_0.40_0.45.pdf}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Efficiency vs. Angular Resolution}
+    \centering
+    \includegraphics[width=0.75\textwidth]{build/ar_vs_eff.pdf}
+\end{frame}
+
 \begin{frame}{Evaluation Metrics}
     \begin{minipage}{0.48\textwidth}
         \begin{align*}
@@ -35,11 +59,6 @@
     \end{minipage}
 \end{frame}
 
-\begin{frame}
-    \centering
-    \includegraphics[width=0.9\textwidth]{build/ar_vs_eff.pdf}
-\end{frame}
-
 \begin{frame}{Metrics: \texttt{TailcutsImageCleaner}}
     \centering
     \includegraphics[width=0.9\textwidth]{build/metrics_tailcuts.pdf}
@@ -51,13 +70,13 @@
 \end{frame}
 
 \begin{frame}{Metrics: \texttt{FACTImageCleaner}}
-    \vspace{-0.28cm}
+    \vspace{-0.355cm}
     \centering
     \includegraphics[width=0.9\textwidth]{build/metrics_fact.pdf}
 \end{frame}
 
 \begin{frame}{Metrics: \texttt{TimeConstraintImageCleaner}}
-    \vspace{-0.1cm}
+    \vspace{-0.15cm}
     \centering
     \includegraphics[width=0.9\textwidth]{build/metrics_tcc.pdf}
 \end{frame}

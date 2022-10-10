@@ -1,0 +1,35 @@
+\begin{frame}{On the limitations of this work}
+    \begin{itemize}
+        \item Only MST data was used so far \rightarrow{} Optimize parameters using LST data also
+        \begin{itemize}
+            \item [\rightarrow] Another grid search only for LST data is necessary
+        \end{itemize}
+        \setlength\itemsep{1em}
+        \item Efficiency was prioritized over angular resolution due to more statistics
+        \begin{itemize}
+            \item [\rightarrow] Another user might want a better angular resolution instead
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Conclusions and Outlook}
+    \begin{columns}
+        \begin{column}{0.48\textwidth}
+            \begin{itemize}
+                \item The hyperparameters found in this work improved the performance of the algorithms
+                \begin{itemize}
+                    \item [\rightarrow] All algorithms have better efficiency and angular resolution compared to the default settings
+                \end{itemize}
+                \item The \texttt{FACTImageCleaner} is the best performing algorithm
+                \item Prioritizing efficiency over angular resolution resulted in better metrics for all algorithms
+                \item [\rightarrow] Further analysis and a broader grid search may still lead to even better-suited hyperparameters
+                \begin{itemize}
+                    \item [\rightarrow] This work can be used as a starting point for further optimization (also for LST data)
+                \end{itemize}
+            \end{itemize}
+        \end{column}
+        \begin{column}{0.48\textwidth}
+
+        \end{column}
+    \end{columns}
+\end{frame}

@@ -2,11 +2,15 @@
     \ifthenelse{\equal{\theme}{\string 1}}
     {% use dark theme
     \centering
-    \includegraphics[height=0.95\textheight]{graphics/ctapipe_light.pdf}
+    \includegraphics[height=0.9\textheight]{graphics/ctapipe_light.pdf}
+    \vspace{-0.25cm}
+    \footnote{\textcolor{white!85!black}{Adapted from J.~Hackfeld and M.~Linhoff}}
     }
     {% use light theme
     \centering
-    \includegraphics[height=0.95\textheight]{graphics/ctapipe.png}
+    \includegraphics[height=0.9\textheight]{graphics/ctapipe.png}
+    \vspace{-0.25cm}
+    \footnote{\textcolor{darkgray!85!black}{Adapted from J.~Hackfeld and M.~Linhoff}}
     }
 \end{frame}
 
@@ -20,7 +24,6 @@
     \centering
     \includegraphics[width=\textwidth]{build/tikz/data_pipeline.pdf}
     }
-
 \end{frame}
 
 \ifthenelse{\equal{\theme}{\string 1}}
@@ -30,8 +33,6 @@
     {% use light theme
     \input{content/cleaner_steps_light.tex}
     }
-
-
 \begin{frame}
     \centering
     \includegraphics[width=0.9\textwidth]{build/quantiles_plot.pdf}

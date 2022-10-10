@@ -83,17 +83,17 @@ dark: $(TIKZ) presentation_dark.pdf
 .DELETE_ON_ERROR:
 presentation_light.pdf: FORCE | build
 	@echo 0 > build/darktheme.var
-	@TEXINPUTS="$$(pwd):" latexmk $(TeXOptions) presentation.tex 1> build/log || cat build/log
+	@TEXINPUTS=$$(pwd): latexmk $(TeXOptions) presentation.tex 1> build/log || cat build/log
 	mv build/presentation.pdf $@
 
 presentation_dark.pdf: FORCE | build
 	@echo 1 > build/darktheme.var
-	@TEXINPUTS="$$(pwd):" latexmk $(TeXOptions) presentation.tex 1> build/log || cat build/log
+	@TEXINPUTS=$$(pwd): latexmk $(TeXOptions) presentation.tex 1> build/log || cat build/log
 	mv build/presentation.pdf $@
 
 $(TIKZ): $(TIKZFILES) | build/tikz
 	@echo "Compiling TikZ file $(BLUE)$(basename $(notdir $@)).tex$(RESET)"
-	@TEXINPUTS="$$(pwd):" latexmk $(TikZOptions) $(TIKZFILES) 1> \
+	@TEXINPUTS=$$(pwd): latexmk $(TikZOptions) $(TIKZFILES) 1> \
 		build/tikz/$(basename $(notdir $@))_log || cat build/tikz/$(basename $(notdir $@))_log
 
 
