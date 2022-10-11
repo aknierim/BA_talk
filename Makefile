@@ -143,5 +143,8 @@ clean_tex:
 # build/tikz/iact.pdf: FORCE | build/tikz
 # 	@TEXINPUTS=$$(pwd): latexmk $(TikZOptions) -pvc tikz/iact.tex 1> build/log || cat build/log
 
-build/tikz/xkcd.pdf: FORCE | build/tikz
-	@TEXINPUTS=$$(pwd): latexmk $(TikZOptions) -pvc tikz/xkcd.tex 1> build/log || cat build/log
+# build/tikz/xkcd_dark.pdf: FORCE | build/tikz
+# 	@TEXINPUTS=$$(pwd): latexmk $(TikZOptions) tikz/xkcd_dark.tex 1> build/log || cat build/log
+
+# build/tikz/xkcd_light.pdf: FORCE | build/tikz
+# 	@TEXINPUTS=$$(pwd): latexmk $(TikZOptions) tikz/xkcd_light.tex 1> build/log || cat build/log

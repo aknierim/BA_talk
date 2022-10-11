@@ -54,7 +54,7 @@ for v, q, alpha in zip(quantiles, QUANTILES, np.linspace(0.3, 1.0, len(QUANTILES
     plt.axvline(v, color='C2', alpha=alpha, label=f"Q({q:.2%}) = {v:.2f}", lw=1)
 
 plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
-ax.set_title(rf'Picture Quantiles for \texttt{{MST\_MST\_NectarCam}}')
+ax.set_title(rf'Picture Quantiles for \texttt{{MST\_MST\_NectarCam}}', fontsize=14)
 ax.set_xscale('log')
 ax.set_yscale('log')
 ax.set_xlabel('Pixel Value / p.e.')

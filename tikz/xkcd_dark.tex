@@ -17,17 +17,17 @@
 % \pagecolor{darkmode}
 
 % MAN ON ICE - at rest
-\def\W{5.2}     % ground width
-\def\L{3.2}     % length
-\def\T{0.08}    % plank thickness
-\def\H{2.2}     % human height
+\def\W{5.2}
+\def\L{3.2}
+\def\T{0.08}
+\def\H{2.2}
 
 
 \begin{tikzpicture}
-    \draw[opacity=0] (0,0) rectangle (2.5,3.5);
+  \draw[opacity=0] (0,0) rectangle (2.5,3.5);
   \def\x{-0.1*\W} % human position
 
-%   \foreach \x in {0.0,0.1,...,4.0}
+% \foreach \x in {0.0,0.1,...,4.0}
 %     \foreach \y in {0.0,0.1,...,4.0}
 %         \draw[thin] (\x,\y) rectangle (\x+1,\y+1);
 % \foreach \x in {0,1,...,4}
@@ -51,12 +51,8 @@
   \draw[maincolour, thick, limb, line width=0.5mm] (0.5,0) -- (1.2,1.8);
   \draw[maincolour, thick, limb, line width=0.5mm] (1.2,0) -- (1.2,1.8);
   \draw[maincolour, thick, limb, line width=0.5mm] (1.9,0) -- (1.2,1.8);
-
   \draw[maincolour, fill, rotate around={150:(0.25,1.575)}] (0.1,1.5) rectangle (0.4,1.65);
   \end{scope}
-
-
-
 
 \end{tikzpicture}
 
