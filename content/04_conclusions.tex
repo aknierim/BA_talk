@@ -32,16 +32,18 @@
         \end{column}
         \begin{column}{0.48\textwidth}
             \begin{tikzpicture}
+                % \roundpic[<optional arguments>, e.g. xshift or yshift]\
+                % {<radius of the cirlce [cm]>}{<picture width [cm]>}{<path_to_picture>}{x pos}{y pos}{label}
                 \ifthenelse{\equal{\theme}{\string 1}}
                 {% use dark theme
                 \roundpic[xshift=0cm,yshift=0, fill=darkmode]{7.8cm}{8cm}{build/metrics_baseline_dark.pdf}{5}{2.3}{metrics_baseline}
-                \roundpic[xshift=-.1cm,yshift=-.2cm, fill=darkmode]{3.8cm}{3cm}{build/AR_Aeff_MST_0.40_0.45_dark.pdf}{0}{3.5}{rel_AR}
-                \roundpic[xshift=0cm,yshift=0, fill=darkmode]{3cm}{2.5cm}{build/Rel_AR_0.40_0.45_base_dark.pdf}{2}{1}{ar_eff}
+                \roundpic[xshift=-.1cm, fill=darkmode]{3.8cm}{2.5cm}{build/AR_Aeff_MST_0.40_0.45_dark.pdf}{0}{3.5}{sub:Efficiency_AR}
+                \roundpic[xshift=0cm,yshift=0, fill=darkmode]{3cm}{2.5cm}{build/Rel_AR_0.40_0.45_base_dark.pdf}{2}{1}{rel_AR}
                 }
                 {% use light theme
                 \roundpic[xshift=0cm,yshift=0, fill=white]{7.8cm}{8cm}{build/metrics_baseline_light.pdf}{5}{2.3}{metrics_baseline}
-                \roundpic[xshift=-.1cm,yshift=-.2cm, fill=white]{3.8cm}{3cm}{build/AR_Aeff_MST_0.40_0.45_light.pdf}{0}{3.5}{rel_AR}
-                \roundpic[xshift=0cm,yshift=0, fill=white]{3cm}{2.5cm}{build/Rel_AR_0.40_0.45_base_light.pdf}{2}{1}{ar_eff}
+                \roundpic[xshift=-.1cm, fill=white]{3.8cm}{2.5cm}{build/AR_Aeff_MST_0.40_0.45_light.pdf}{0}{3.5}{sub:Efficiency_AR}
+                \roundpic[xshift=0cm,yshift=0, fill=white]{3cm}{2.5cm}{build/Rel_AR_0.40_0.45_base_light.pdf}{2}{1}{rel_AR}
                 }
             \end{tikzpicture}
 

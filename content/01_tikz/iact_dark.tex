@@ -80,11 +80,11 @@
 
   % CAMERA FRAME
   \uncover<5->{
-  \node [circle, draw, color=maincolour, fill=darkmode, minimum width = 2.5cm, path picture = {
-    \node [] at (path picture bounding box.center) {\includegraphics[height=2.8cm]{graphics/mst_camera_frame.pdf}};
-    }, xshift=\globalshift] (CAMERAFRAME) at (-0.5,2) {};
+  \node [circle, draw, color=maincolour, fill=darkmode, minimum width = 4cm, path picture = {
+    \node [] at (path picture bounding box.center) {\includegraphics[height=4.4cm]{graphics/mst_camera_frame.pdf}};
+    }, xshift=\globalshift] (CAMERAFRAME) at (-3,3.5) {};
 
-  \node [above, yshift=1.3cm] at (CAMERAFRAME) {\large Snapshot in camera frame};
+  \node [above, yshift=2.1cm] at (CAMERAFRAME) {\large Snapshot in camera frame};
 
   \path[maincolour, every node/.style={font=\sffamily\small}, ->, >=latex, xshift=\globalshift] (3.2,2.6) edge[bend right] (CAMERAFRAME);
   }
