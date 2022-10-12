@@ -1,13 +1,17 @@
 \begin{frame}
   \ifthenelse{\equal{\theme}{\string 1}}
   {% use dark theme
+  \begingroup
   \centering
-  \includegraphics[height=0.9\textheight]{build/tikz/iact_dark.pdf}
+  \scalebox{0.76}{\input{content/intro_tikz/iact_dark.tex}}
+  \endgroup
   \footnote{\href{https://www.flickr.com/photos/cta_observatory/45643242354/in/photostream/}{\textcolor{white!85!black}{Adapted from: R. White (MPIK) / K. Bernlohr (MPIK) / DESY}}}
   }
   {% use light theme
+  \begingroup
   \centering
-  \includegraphics[height=0.9\textheight]{build/tikz/iact_light.pdf}
+  \scalebox{0.76}{\input{content/intro_tikz/iact_light.tex}}
+  \endgroup
   \footnote{\href{https://www.flickr.com/photos/cta_observatory/45643242354/in/photostream/}{\textcolor{darkgray!85!black}{Adapted from: R. White (MPIK) / K. Bernlohr (MPIK) / DESY}}}
   }
 \end{frame}
@@ -17,17 +21,17 @@
 %   \footnote{\href{https://www.flickr.com/photos/cta_observatory/45643242354/in/photostream/}{\textcolor{white!85!black}{Adapted from: R. White (MPIK) / K. Bernlohr (MPIK) / DESY}}}
 % \end{frame}
 
-\begin{frame}{Extensive Air Showers}
-    \ifthenelse{\equal{\theme}{\string 1}}
-    {% use dark theme
-    \includegraphics[width=0.48\textwidth]{build/tikz//heitler_model_dark.pdf}
-    \includegraphics[width=0.48\textwidth]{build/tikz/cherenkov_radiation_dark.pdf}
-    }
-    {% use light theme
-    \includegraphics[width=0.48\textwidth]{build/tikz/heitler_model.pdf}
-    \includegraphics[width=0.48\textwidth]{build/tikz/cherenkov_radiation.pdf}
-    }
-\end{frame}
+% \begin{frame}{Extensive Air Showers}
+%     \ifthenelse{\equal{\theme}{\string 1}}
+%     {% use dark theme
+%     \includegraphics[width=0.48\textwidth]{build/tikz//heitler_model_dark.pdf}
+%     \includegraphics[width=0.48\textwidth]{build/tikz/cherenkov_radiation_dark.pdf}
+%     }
+%     {% use light theme
+%     \includegraphics[width=0.48\textwidth]{build/tikz/heitler_model.pdf}
+%     \includegraphics[width=0.48\textwidth]{build/tikz/cherenkov_radiation.pdf}
+%     }
+% \end{frame}
 
 \begin{frame}{The Cherenkov Telescope Array (CTA)}
     \begin{minipage}{0.55\textwidth}
