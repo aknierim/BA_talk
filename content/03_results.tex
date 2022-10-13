@@ -114,3 +114,29 @@
         \end{tabular}
     \end{table}
 \end{frame}
+
+\begin{frame}{This Work's Hyperparameters}
+    \todo[inline]{Colors for light theme}
+    \begin{table}
+        \begin{tblr}{
+            colspec={
+                c
+                S[table-format=1.3]
+                S[table-format=1.3]
+                S[table-format=1.0]
+                S[table-format=1.1]
+                S[table-format=2.1]
+                S[table-format=1.1]
+                },
+            row{odd} = {bg=darkmode!92!white},
+            row{1} = {bg=darkmode}
+            }
+            {{{Cleaning Algorithm}}} &{{ {\(Q_c \;/\; \si{\pe}\)}}} & {{{\(Q_b \;/\; \si{\pe}\)}}} & {{{Min. Neigh.}}} &
+            {{{\(t \;/\; \si{\nano\second}\)}}} & {{{\(t_c \;/\; \si{\nano\second}\)}}} & {{{\(t_b \;/\; \si{\nano\second}\)}}} \\
+            Tailcuts & 6.700 & 1.675 & 1 &      &      &      \\
+            MARS     & 5.500 & 1.833 & 2 &      &      &      \\
+            FACT     & 4.200 & 1.400 & 2 &  6.0 &      &      \\
+            TCC      & 6.700 & 1.675 & 1 &      & 15.0 &  9.0 \\
+        \end{tblr}
+    \end{table}
+\end{frame}
