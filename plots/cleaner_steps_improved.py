@@ -97,7 +97,10 @@ def mask_image(current_mask, previous_mask):
 #   ============================================================================
 
 # Tailcuts
-def set_image_tail_1(cleaner, mask, mask2, legend, axs):
+def set_image_tail_1(index, cleaner, mask, mask2, legend, axs):
+
+    mask = mask[index]
+    mask2 = mask2[index]
 
     axs.set_facecolor('0.1')
 
@@ -120,7 +123,10 @@ def set_image_tail_1(cleaner, mask, mask2, legend, axs):
     return handles
 
 
-def set_image_tail_2(cleaner, mask, mask2, legend, axs):
+def set_image_tail_2(index, cleaner, mask, mask2, legend, axs):
+
+    mask = mask[index]
+    mask2 = mask2[index]
 
     axs.set_facecolor('0.1')
 
@@ -141,7 +147,10 @@ def set_image_tail_2(cleaner, mask, mask2, legend, axs):
 
 
 # MARS
-def set_image_mars(cleaner, mask, mask2, legend, axs):
+def set_image_mars(index, cleaner, mask, mask2, legend, axs):
+
+    mask = mask[index]
+    mask2 = mask2[index]
 
     axs.set_facecolor('0.1')
 
@@ -163,7 +172,10 @@ def set_image_mars(cleaner, mask, mask2, legend, axs):
 
 
 # FACT
-def set_image_fact_1(cleaner, mask, mask2, legend, axs):
+def set_image_fact_1(index, cleaner, mask, mask2, legend, axs):
+
+    mask = mask[index]
+    mask2 = mask2[index]
 
     axs.set_facecolor('0.1')
 
@@ -186,7 +198,10 @@ def set_image_fact_1(cleaner, mask, mask2, legend, axs):
     return handles
 
 
-def set_image_fact_2(cleaner, step, mask, mask2, legend, axs):
+def set_image_fact_2(index, cleaner, step, mask, mask2, legend, axs):
+
+    mask = mask[index]
+    mask2 = mask2[index]
 
     axs.set_facecolor('0.1')
 
@@ -208,7 +223,10 @@ def set_image_fact_2(cleaner, step, mask, mask2, legend, axs):
 
 
 # TCC
-def set_image_tcc_1(cleaner, mask, mask2, legend, axs):
+def set_image_tcc_1(index, cleaner, mask, mask2, legend, axs):
+
+    mask = mask[index]
+    mask2 = mask2[index]
 
     axs.set_facecolor('0.1')
 
@@ -231,7 +249,10 @@ def set_image_tcc_1(cleaner, mask, mask2, legend, axs):
     return handles
 
 
-def set_image_tcc_2(cleaner, step, mask, mask2, legend, axs):
+def set_image_tcc_2(index, cleaner, step, mask, mask2, legend, axs):
+
+    mask = mask[index]
+    mask2 = mask2[index]
 
     axs.set_facecolor('0.1')
 
@@ -254,20 +275,20 @@ def set_image_tcc_2(cleaner, step, mask, mask2, legend, axs):
 # ==============================================================================
 
 # Tailcuts
-def tail_plot():
+def tail_plot(index):
 
     mask_tail_1 = []
     mask_tail_2 = []
-    for event, arrival_times in zip(image, peak_time):
+    for event, arrival_times in zip(events_by_type[tel_type[0]]['image'], events_by_type[tel_type[0]]['peak_time']):
         mask_tail_1.append(tail_1(geom, event))
         mask_tail_2.append(tail_2(geom, event))
 
     fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(11,5), constrained_layout=True)
-    handles = set_image_tail_1('Tailcuts', mask_tail_1, mask_tail_2, legend=False, axs=ax1)
-    set_image_tail_2('Tailcuts', mask_tail_1, mask_tail_2, legend=False, axs=ax2)
+    handles = set_image_tail_1(index, 'Tailcuts', mask_tail_1, mask_tail_2, legend=False, axs=ax1)
+    set_image_tail_2(index, 'Tailcuts', mask_tail_1, mask_tail_2, legend=False, axs=ax2)
 
     legend = fig.legend(bbox_to_anchor=(0.05, -0.1, 0.9, -0.05), loc="lower left",
-                    mode="expand", borderaxespad=0, ncol=4, handles=handles, fontsize=20)
+                    mode="expand", borderaxespad=0, ncol=4, handles=handles, fontsize=14)
 
 
 
@@ -275,23 +296,23 @@ def tail_plot():
 
 
 # MARS
-def mars_plot():
+def mars_plot(index):
 
     mask_mars_1 = []
     mask_mars_2 = []
     mask_mars_3 = []
-    for event, arrival_times in zip(image, peak_time):
+    for event, arrival_times in zip(events_by_type[tel_type[0]]['image'], events_by_type[tel_type[0]]['peak_time']):
         mask_mars_1.append(mars_1(geom, event))
         mask_mars_2.append(mars_2(geom, event))
         mask_mars_3.append(mars_3(geom, event))
 
     fig, (ax1, ax2, ax3) = plt.subplots(1, 3, figsize=(17, 5), constrained_layout=True)
-    set_image_tail_1('MARS', mask_mars_1, mask_mars_2, legend=False, axs=ax1)
-    handles = set_image_tail_2('MARS', mask_mars_1, mask_mars_2, legend=False, axs=ax2)
-    set_image_mars('MARS', mask_mars_3, mask_mars_2, legend=False, axs=ax3)
+    set_image_tail_1(index, 'MARS', mask_mars_1, mask_mars_2, legend=False, axs=ax1)
+    handles = set_image_tail_2(index, 'MARS', mask_mars_1, mask_mars_2, legend=False, axs=ax2)
+    set_image_mars(index, 'MARS', mask_mars_3, mask_mars_2, legend=False, axs=ax3)
 
     legend = fig.legend(bbox_to_anchor=(0.2, -0.1, 0.6, -0.05), loc="lower center",
-                    mode="expand", borderaxespad=0, ncol=4, handles=handles, fontsize=20)
+                    mode="expand", borderaxespad=0, ncol=4, handles=handles, fontsize=14)
 
 
 
@@ -299,7 +320,7 @@ def mars_plot():
 
 
 # FACT
-def fact_plot():
+def fact_plot(index):
 
     fc1 = []
     fc2 = []
@@ -307,7 +328,7 @@ def fact_plot():
     fc4 = []
     fc5 = []
     fc6 = []
-    for event, arrival_times in zip(image, peak_time):
+    for event, arrival_times in zip(events_by_type[tel_type[0]]['image'], events_by_type[tel_type[0]]['peak_time']):
         fc1.append(fact_1(geom, event, arrival_times))
         fc2.append(fact_2(geom, event, arrival_times))
         fc3.append(fact_3(geom, event, arrival_times))
@@ -317,15 +338,15 @@ def fact_plot():
 
     fig, ax = plt.subplots(2, 3, figsize=(17, 10), constrained_layout=True)
     ax = ax.flatten()
-    handles = set_image_fact_1('FACT', fc1, fc1, legend=False, axs=ax[0])
-    set_image_fact_2('FACT', '2nd', fc2, fc1, legend=False, axs=ax[1])
-    set_image_fact_2('FACT', '3rd', fc3, fc2, legend=False, axs=ax[2])
-    set_image_fact_2('FACT', '4th', fc4, fc3, legend=False, axs=ax[3])
-    set_image_fact_2('FACT', '5th', fc5, fc4, legend=False, axs=ax[4])
-    set_image_fact_2('FACT', '6th', fc6, fc5, legend=False, axs=ax[5])
+    handles = set_image_fact_1(index, 'FACT', fc1, fc1, legend=False, axs=ax[0])
+    set_image_fact_2(index, 'FACT', '2nd', fc2, fc1, legend=False, axs=ax[1])
+    set_image_fact_2(index, 'FACT', '3rd', fc3, fc2, legend=False, axs=ax[2])
+    set_image_fact_2(index, 'FACT', '4th', fc4, fc3, legend=False, axs=ax[3])
+    set_image_fact_2(index, 'FACT', '5th', fc5, fc4, legend=False, axs=ax[4])
+    set_image_fact_2(index, 'FACT', '6th', fc6, fc5, legend=False, axs=ax[5])
 
     legend = fig.legend(bbox_to_anchor=(0.2, -0.05, 0.6, 0), loc="lower center",
-                    mode="expand", borderaxespad=0, ncol=4, handles=handles, fontsize=20)
+                    mode="expand", borderaxespad=0, ncol=4, handles=handles, fontsize=14)
 
 
 
@@ -333,14 +354,14 @@ def fact_plot():
 
 
 # TCC
-def tcc_plot():
+def tcc_plot(index):
 
     tcc1 = []
     tcc2 = []
     tcc3 = []
     tcc4 = []
     tcc5 = []
-    for event, arrival_times in zip(image, peak_time):
+    for event, arrival_times in zip(events_by_type[tel_type[0]]['image'], events_by_type[tel_type[0]]['peak_time']):
         tcc1.append(tcc_1(geom, event, arrival_times))
         tcc2.append(tcc_2(geom, event, arrival_times))
         tcc3.append(tcc_3(geom, event, arrival_times))
@@ -360,14 +381,14 @@ def tcc_plot():
 
         axs.append(ax)
 
-    handles = set_image_tcc_1('TCC', tcc1, tcc1, legend=False, axs=axs[0])
-    set_image_tcc_2('TCC', '2nd', tcc2, tcc1, legend=False, axs=axs[1])
-    set_image_tcc_2('TCC', '3rd', tcc3, tcc2, legend=False, axs=axs[2])
-    set_image_tcc_2('TCC', '4th', tcc4, tcc3, legend=False, axs=axs[3])
-    set_image_tcc_2('TCC', '5th', tcc5, tcc4, legend=False, axs=axs[4])
+    handles = set_image_tcc_1(index, 'TCC', tcc1, tcc1, legend=False, axs=axs[0])
+    set_image_tcc_2(index, 'TCC', '2nd', tcc2, tcc1, legend=False, axs=axs[1])
+    set_image_tcc_2(index, 'TCC', '3rd', tcc3, tcc2, legend=False, axs=axs[2])
+    set_image_tcc_2(index, 'TCC', '4th', tcc4, tcc3, legend=False, axs=axs[3])
+    set_image_tcc_2(index, 'TCC', '5th', tcc5, tcc4, legend=False, axs=axs[4])
 
     legend = fig.legend(bbox_to_anchor=(0.2, 0.07, 0.6, 0.12), loc="lower center",
-                    mode="expand", borderaxespad=0, ncol=4, handles=handles, fontsize=20)
+                    mode="expand", borderaxespad=0, ncol=4, handles=handles, fontsize=14)
 
     plt.savefig(f"build/tcc_{args.theme}.pdf", bbox_inches='tight')
 
@@ -376,7 +397,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.theme == "dark":
-        plt.style.use('darkmode.mplstyle')
+        plt.style.use('plots/darkmode.mplstyle')
 
     masks_image_cmap = custom_cmap(['#2e2e2e', '#b00e0e', '#ffffff', '#ffffff', '#44c949'])
 
@@ -392,18 +413,15 @@ if __name__ == "__main__":
 
     )
 
-
-    data = loader.read_telescope_events_by_type()
+    events_by_type = loader.read_telescope_events_by_type()
     subarray = loader.subarray
 
     tel_type = ["MST_MST_NectarCam", 5]
     geom = subarray.tel[tel_type[1]].camera.geometry
 
-    image = data[tel_type[0]]['image'][214]
-    peak_time = data[tel_type[0]]['peak_time'][214]
     # print(data)
 
-    # tail_plot()
-    # mars_plot()
-    fact_plot()
-    tcc_plot()
+    tail_plot(index=214)
+    mars_plot(index=214)
+    fact_plot(index=214)
+    tcc_plot(index=214)

@@ -37,13 +37,16 @@ baseline_light=build/metrics_baseline_light.pdf \
 	build/Rel_AR_0.10_0.15_base_light.pdf build/Rel_AR_0.15_0.20_base_light.pdf build/Rel_AR_0.20_0.25_base_light.pdf \
 	build/Rel_AR_0.25_0.30_base_light.pdf build/Rel_AR_0.30_0.35_base_light.pdf build/Rel_AR_0.35_0.40_base_light.pdf \
 	build/Rel_AR_0.40_0.45_base_light.pdf
+cleaners_improved=build/tailcuts_dark.pdf build/mars_dark.pdf build/fact_dark.pdf build/tcc_dark.pdf
+cleaners_improved_light=build/tailcuts_light.pdf build/mars_light.pdf build/fact_light.pdf build/tcc_light.pdf
 
 # tables
 tab_writer=build/tables.txt
 
-PLOTS := $(ar_eff) $(ar_vs_eff) $(metrics) $(baseline) $(quantiles)
+PLOTS := $(ar_eff) $(ar_vs_eff) $(metrics) $(baseline) $(quantiles) $(cleaners_improved)
 
-PLOTS_LIGHT := $(ar_eff_light) $(ar_vs_eff_light) $(metrics_light) $(baseline_light) $(quantiles_light)
+PLOTS_LIGHT := $(ar_eff_light) $(ar_vs_eff_light) $(metrics_light) $(baseline_light)
+PLOTS_LIGHT += $(quantiles_light) $(cleaners_improved_light)
 
 TABLES := $(tab_writer)
 
@@ -93,6 +96,13 @@ $(baseline): plots/baseline.py matplotlibrc header-matplotlib.tex | build
 
 $(baseline_light): plots/baseline.py matplotlibrc header-matplotlib.tex | build
 	TEXINPUTS=$$(pwd): python -W ignore plots/baseline.py --theme light
+
+$(cleaners_improved): plots/cleaner_steps_improved.py matplotlibrc header-matplotlib.tex | build
+	TEXINPUTS=$$(pwd): python plots/cleaner_steps_improved.py --theme dark
+
+$(cleaners_improved_light): plots/cleaner_steps_improved.py matplotlibrc header-matplotlib.tex | build
+	TEXINPUTS=$$(pwd): python plots/cleaner_steps_improved.py --theme light
+
 
 # tables
 $(tab_writer): thesis_scripts/table_writer.py | build
