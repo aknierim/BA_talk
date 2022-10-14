@@ -105,11 +105,13 @@ dark: $(TIKZ) presentation_dark.pdf
 
 .DELETE_ON_ERROR:
 presentation_light.pdf: FORCE | build
+	@echo "Building $(BLUE)${BOLD}$@$(RESET)"
 	@echo 0 > build/darktheme.var
 	@TEXINPUTS=$$(pwd): latexmk $(TeXOptions) presentation.tex 1> build/log || cat build/log
 	mv build/presentation.pdf $@
 
 presentation_dark.pdf: FORCE | build
+	@echo "Building $(BLUE)${BOLD}$@$(RESET)"
 	@echo 1 > build/darktheme.var
 	@TEXINPUTS=$$(pwd): latexmk $(TeXOptions) presentation.tex 1> build/log || cat build/log
 	mv build/presentation.pdf $@

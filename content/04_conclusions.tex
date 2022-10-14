@@ -7,7 +7,7 @@
         \setlength\itemsep{1em}
         \item Efficiency was prioritized over angular resolution due to more statistics
         \begin{itemize}
-            \item [\rightarrow] Another user might want a better angular resolution instead
+            \item [\rightarrow] A different user might want a better angular resolution instead
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -15,18 +15,18 @@
 \begin{frame}[label=summary]{Conclusions and Outlook}
     \begin{columns}
         \begin{column}{0.48\textwidth}
-            \todo[inline]{Scale images on the right hand side}
+            % \todo[inline]{Scale images on the right hand side}
             \begin{itemize}
                 \setlength\itemsep{2em}
                 \item The hyperparameters found in this work improved the performance of the algorithms
-                \begin{itemize}
-                    \item [\rightarrow] All algorithms have better efficiency and angular resolution compared to the default settings
-                \end{itemize}
-                \item The \texttt{FACTImageCleaner} is the best performing algorithm, but \texttt{TCC} improved the most
+                % \begin{itemize}
+                %     \item [\rightarrow] All algorithms have better efficiency and angular resolution compared to the default settings
+                % \end{itemize}
+                \item The \texttt{FACTImageCleaner} is the best performing algorithm, while \texttt{TCC} improved the most
                 \item Prioritizing efficiency over angular resolution resulted in better metrics for all algorithms
-                \item [\rightarrow] Further analysis and a broader grid search may still lead to even better-suited hyperparameters
+                \item Further analysis and a broader grid search may still lead to even better-suited hyperparameters
                 \begin{itemize}
-                    \item [\rightarrow] This work can be used as a starting point for further optimization (also for LST data)
+                    \item [\rightarrow] This work can be used as a starting point
                 \end{itemize}
             \end{itemize}
         \end{column}
@@ -36,8 +36,8 @@
                 % {<radius of the cirlce [cm]>}{<picture width [cm]>}{<path_to_picture>}{x pos}{y pos}{label}
                 \ifthenelse{\equal{\theme}{\string 1}}
                 {% use dark theme
-                \roundpic[xshift=0cm,yshift=0, fill=darkmode]{7.8cm}{8cm}{build/metrics_baseline_dark.pdf}{5}{2.3}{metrics_baseline}
-                \roundpic[xshift=-.1cm, fill=darkmode]{3.8cm}{2.5cm}{build/AR_Aeff_MST_0.40_0.45_dark.pdf}{0}{3.5}{sub:Efficiency_AR}
+                \roundpic[xshift=-.75cm,yshift=0, fill=darkmode]{7.8cm}{4cm}{build/AR_Aeff_MST_0.40_0.45_dark.pdf}{5}{2.3}{sub:Efficiency_AR}
+                \roundpic[xshift=1cm, fill=darkmode]{3.8cm}{7cm}{build/metrics_baseline_dark.pdf}{0}{3.5}{metrics_baseline}
                 \roundpic[xshift=0cm,yshift=0, fill=darkmode]{3cm}{2.5cm}{build/Rel_AR_0.40_0.45_base_dark.pdf}{2}{1}{rel_AR}
                 }
                 {% use light theme

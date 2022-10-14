@@ -26,6 +26,8 @@
 
 \begin{frame}{Evaluation Metrics}
     \begin{minipage}{0.48\textwidth}
+        \begingroup
+        \setlength{\jot}{10pt}
         \begin{align*}
             \tpr &= \frac{\tp}{\tp + \fn} \\
             \tnr &= \frac{\tn}{\tn + \fp} \\
@@ -33,31 +35,22 @@
             \acc &= \frac{\tp + \tn}{\tp + \fp + \tn + \fn} \\
             \ba &= \frac{\tpr + \tnr}{2}
         \end{align*}
+        \endgroup
     \end{minipage}
     \begin{minipage}{0.48\textwidth}
-        \ifthenelse{\equal{\theme}{\string 1}}
-            {% use dark theme
-            \begin{table}
-                \centering
-                \begin{tabular}{r l c c}
-                    & & \multicolumn{2}{c}{Prediction} \\
-                    & & positive & negative \\
-                    \parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{Label}}} &  pos. & \colorbox{darkmode!92!white}{True Positive ($\tp$)} & False Negative ($\fn$) \\
-                    & neg. & False Positive ($\fp$) & \colorbox{darkmode!92!white}{True Negative ($\tn$)} \\
-                \end{tabular}
-            \end{table}%
+        \begin{table}
+            \centering
+            \begin{tblr}{
+                colspec = {rlcc},
+                cell{3}{3} = {darkmode!92!white},
+                cell{4}{4} = {darkmode!92!white},
             }
-            {% use light theme
-            \begin{table}
-                \centering
-                \begin{tabular}{r l c c}
-                    & & \multicolumn{2}{c}{Prediction} \\
-                    & & positive & negative \\
-                    \parbox[t]{2mm}{\multirow{2}{*}{\rotatebox[origin=c]{90}{Label}}} &  pos. & \colorbox{white!92!black}{True Positive ($\tp$)} & False Negative ($\fn$) \\
-                    & neg. & False Positive ($\fp$) & \colorbox{white!92!black}{True Negative ($\tn$)} \\
-                \end{tabular}
-            \end{table}%
-            }
+            & & \SetCell[c=2]{c} Prediction \\
+            & & positive & negative \\
+            \SetCell[r=2]{r} \rotatebox[origin=c]{90}{Label} & pos. & True Positive ($\tp$) & False Negative ($\fn$) \\
+            & neg. & False Positive ($\fp$) & True Negative ($\tn$) \\
+            \end{tblr}
+        \end{table}
     \end{minipage}
 \end{frame}
 
@@ -83,43 +76,14 @@
     \includegraphics[width=0.9\textwidth]{build/metrics_tcc_dark.pdf}
 \end{frame}
 
-\begin{frame}[label=metrics_baseline]{Performance Compared to the Default Settings}
-    \centering
-    \includegraphics[width=0.9\textwidth]{build/metrics_baseline_dark.pdf}
-\end{frame}
-
-\begin{frame}{Comparison of the Cleaning Algorithms}
-    \centering
-    \includegraphics[width=0.9\textwidth]{build/metrics_all_dark.pdf}
-\end{frame}
 
 \subsection{This Work's Hyperparameters}%
 \label{sub:Hyperparameters_thesis}
 
 \begin{frame}{This Work's Hyperparameters}
     \begin{table}
-        \centering
-        \rowcolors{0}{darkmode!92!white}{}
-        \begin{tabular}{c S[table-format=1.3] S[table-format=1.3] S[table-format=1.0]
-            S[table-format=2.1] S[table-format=2.1] S[table-format=2.1]}
-            \hiderowcolors%
-            {Cleaning Algorithm} & {\(Q_c \;/\; \si{\pe}\)} & {\(Q_b \;/\; \si{\pe}\)} & {Min. Neigh.} &
-            {\(t \;/\; \si{\nano\second}\)} & {\(t_c \;/\; \si{\nano\second}\)} & {\(t_b \;/\; \si{\nano\second}\)} \\
-            \addlinespace[0.5em]
-            \showrowcolors%
-            Tailcuts & 6.700 & 1.675 & 1 &      &      &      \\
-            MARS     & 5.500 & 1.833 & 2 &      &      &      \\
-            FACT     & 4.200 & 1.400 & 2 &  6.0 &      &      \\
-            TCC      & 6.700 & 1.675 & 1 &      & 15.0 &  9.0 \\
-        \end{tabular}
-    \end{table}
-\end{frame}
-
-\begin{frame}{This Work's Hyperparameters}
-    \todo[inline]{Colors for light theme}
-    \begin{table}
         \begin{tblr}{
-            colspec={
+            colspec = {
                 c
                 S[table-format=1.3]
                 S[table-format=1.3]
@@ -129,7 +93,7 @@
                 S[table-format=1.1]
                 },
             row{odd} = {bg=darkmode!92!white},
-            row{1} = {bg=darkmode}
+            row{1} = {bg=} % no background color for the header row
             }
             {{{Cleaning Algorithm}}} &{{ {\(Q_c \;/\; \si{\pe}\)}}} & {{{\(Q_b \;/\; \si{\pe}\)}}} & {{{Min. Neigh.}}} &
             {{{\(t \;/\; \si{\nano\second}\)}}} & {{{\(t_c \;/\; \si{\nano\second}\)}}} & {{{\(t_b \;/\; \si{\nano\second}\)}}} \\
@@ -140,3 +104,18 @@
         \end{tblr}
     \end{table}
 \end{frame}
+
+
+\subsection{Comparison of the Algorithms}%
+\label{sub:Comparison}
+
+\begin{frame}[label=metrics_baseline]{Performance Compared to the Default Settings}
+    \centering
+    \includegraphics[width=0.9\textwidth]{build/metrics_baseline_dark.pdf}
+\end{frame}
+
+\begin{frame}{Comparison of the Cleaning Algorithms}
+    \centering
+    \includegraphics[width=0.9\textwidth]{build/metrics_all_dark.pdf}
+\end{frame}
+

@@ -1,0 +1,121 @@
+\subsection{Efficiency and Angular Resolution}%
+\label{sub:Efficiency_AR}
+
+\begin{frame}{Efficiency and Angular Resolution}
+    Efficiency is calculated as \(\displaystyle \eff = \frac{n_\text{reco}}{n_\text{total}}\).
+    \begin{columns}
+        \begin{column}{0.48\textwidth}
+            \centering
+            \includegraphics[height=0.8\textheight]{build/AR_Aeff_MST_0.10_0.15_light.pdf}
+        \end{column}
+        \hspace{-3cm}
+        \begin{column}{0.48\textwidth}
+            \centering
+            \includegraphics[height=0.8\textheight]{build/AR_Aeff_MST_0.40_0.45_light.pdf}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}{Efficiency vs. Angular Resolution}
+    \centering
+    \includegraphics[width=0.75\textwidth]{build/ar_vs_eff_light.pdf}
+\end{frame}
+
+\subsection{Metrics}%
+\label{sub:Metrics}
+
+\begin{frame}{Evaluation Metrics}
+    \begin{minipage}{0.48\textwidth}
+        \begingroup
+        \setlength{\jot}{10pt}
+        \begin{align*}
+            \tpr &= \frac{\tp}{\tp + \fn} \\
+            \tnr &= \frac{\tn}{\tn + \fp} \\
+            \fnr &= \frac{\fn}{\fn + \tp} \\
+            \acc &= \frac{\tp + \tn}{\tp + \fp + \tn + \fn} \\
+            \ba &= \frac{\tpr + \tnr}{2}
+        \end{align*}
+        \endgroup
+    \end{minipage}
+    \begin{minipage}{0.48\textwidth}
+        \begin{table}
+            \centering
+            \begin{tblr}{
+                colspec = {rlcc},
+                cell{3}{3} = {white!92!black},
+                cell{4}{4} = {white!92!black},
+            }
+            & & \SetCell[c=2]{c} Prediction \\
+            & & positive & negative \\
+            \SetCell[r=2]{r} \rotatebox[origin=c]{90}{Label} & pos. & True Positive ($\tp$) & False Negative ($\fn$) \\
+            & neg. & False Positive ($\fp$) & True Negative ($\tn$) \\
+            \end{tblr}
+        \end{table}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}{Metrics: \texttt{TailcutsImageCleaner}}
+    \centering
+    \includegraphics[width=0.9\textwidth]{build/metrics_tailcuts_light.pdf}
+\end{frame}
+
+\begin{frame}{Metrics: \texttt{MARSImageCleaner}}
+    \centering
+    \includegraphics[width=0.9\textwidth]{build/metrics_mars_light.pdf}
+\end{frame}
+
+\begin{frame}{Metrics: \texttt{FACTImageCleaner}}
+    \vspace{-0.355cm}
+    \centering
+    \includegraphics[width=0.9\textwidth]{build/metrics_fact_light.pdf}
+\end{frame}
+
+\begin{frame}{Metrics: \texttt{TimeConstraintImageCleaner}}
+    \vspace{-0.15cm}
+    \centering
+    \includegraphics[width=0.9\textwidth]{build/metrics_tcc_light.pdf}
+\end{frame}
+
+
+\subsection{This Work's Hyperparameters}%
+\label{sub:Hyperparameters_thesis}
+
+\begin{frame}{This Work's Hyperparameters}
+    \begin{table}
+        \begin{tblr}{
+            colspec = {
+                c
+                S[table-format=1.3]
+                S[table-format=1.3]
+                S[table-format=1.0]
+                S[table-format=1.1]
+                S[table-format=2.1]
+                S[table-format=1.1]
+                },
+            row{odd} = {bg=white!92!black},
+            row{1} = {bg=} % no background color for the header row
+            }
+            {{{Cleaning Algorithm}}} &{{ {\(Q_c \;/\; \si{\pe}\)}}} & {{{\(Q_b \;/\; \si{\pe}\)}}} & {{{Min. Neigh.}}} &
+            {{{\(t \;/\; \si{\nano\second}\)}}} & {{{\(t_c \;/\; \si{\nano\second}\)}}} & {{{\(t_b \;/\; \si{\nano\second}\)}}} \\
+            Tailcuts & 6.700 & 1.675 & 1 &      &      &      \\
+            MARS     & 5.500 & 1.833 & 2 &      &      &      \\
+            FACT     & 4.200 & 1.400 & 2 &  6.0 &      &      \\
+            TCC      & 6.700 & 1.675 & 1 &      & 15.0 &  9.0 \\
+        \end{tblr}
+    \end{table}
+\end{frame}
+
+
+\subsection{Comparison of the Algorithms}%
+\label{sub:Comparison}
+
+\begin{frame}[label=metrics_baseline]{Performance Compared to the Default Settings}
+    \centering
+    \includegraphics[width=0.9\textwidth]{build/metrics_baseline_light.pdf}
+\end{frame}
+
+\begin{frame}{Comparison of the Cleaning Algorithms}
+    \centering
+    \includegraphics[width=0.9\textwidth]{build/metrics_all_light.pdf}
+\end{frame}
+

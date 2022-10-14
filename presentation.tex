@@ -108,7 +108,13 @@
     \end{tikzpicture}
   \end{center}
 \end{frame}
-\input{content/03_results.tex}
+\ifthenelse{\equal{\theme}{\string 1}}
+  {% use dark theme
+  \input{content/03_results_dark.tex}
+  }
+  {% use light theme
+  \input{content/03_results_light.tex}
+  }
 
 
 % CONCLUSION
