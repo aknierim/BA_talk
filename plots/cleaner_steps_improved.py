@@ -32,6 +32,9 @@ parser.add_argument('--theme',
 )
 
 
+SIZE = plt.gcf().get_size_inches()
+
+
 # Custom cmap
 def custom_cmap(color_list: list) -> LinearSegmentedColormap:
     """Creates a colormap to a given list of colors.

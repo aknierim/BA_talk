@@ -39,14 +39,19 @@ baseline_light=build/metrics_baseline_light.pdf \
 	build/Rel_AR_0.40_0.45_base_light.pdf
 cleaners_improved=build/tailcuts_dark.pdf build/mars_dark.pdf build/fact_dark.pdf build/tcc_dark.pdf
 cleaners_improved_light=build/tailcuts_light.pdf build/mars_light.pdf build/fact_light.pdf build/tcc_light.pdf
+classifier_img = build/classifier_img/tail_class_dark.pdf build/classifier_img/mars_class_dark.pdf \
+	build/classifier_img/fact_class_dark.pdf build/classifier_img/tcc_class_dark.pdf
+classifier_img_light = build/classifier_img/tail_class_light.pdf build/classifier_img/mars_class_light.pdf \
+	build/classifier_img/fact_class_light.pdf build/classifier_img/tcc_class_light.pdf
 
 # tables
 tab_writer=build/tables.txt
 
 PLOTS := $(ar_eff) $(ar_vs_eff) $(metrics) $(baseline) $(quantiles) $(cleaners_improved)
+PLOTS += $(classifier_img)
 
 PLOTS_LIGHT := $(ar_eff_light) $(ar_vs_eff_light) $(metrics_light) $(baseline_light)
-PLOTS_LIGHT += $(quantiles_light) $(cleaners_improved_light)
+PLOTS_LIGHT += $(quantiles_light) $(cleaners_improved_light) $(classifier_img_light)
 
 TABLES := $(tab_writer)
 
@@ -103,6 +108,12 @@ $(cleaners_improved): plots/cleaner_steps_improved.py matplotlibrc header-matplo
 $(cleaners_improved_light): plots/cleaner_steps_improved.py matplotlibrc header-matplotlib.tex | build
 	TEXINPUTS=$$(pwd): python plots/cleaner_steps_improved.py --theme light
 
+$(classifier_img): plots/camera_display.py matplotlibrc header-matplotlib.tex | build/classifier_img
+	TEXINPUTS=$$(pwd): python plots/camera_display.py --theme dark
+
+$(classifier_img_light): plots/camera_display.py matplotlibrc header-matplotlib.tex | build/classifier_img
+	TEXINPUTS=$$(pwd): python plots/camera_display.py --theme light
+
 
 # tables
 $(tab_writer): thesis_scripts/table_writer.py | build
@@ -139,6 +150,9 @@ build:
 
 build/tikz:
 	mkdir -p build/tikz/
+
+build/classifier_img:
+	mkdir -p build/classifier_img/
 
 clean:
 	@rm -rf build
