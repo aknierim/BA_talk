@@ -1,8 +1,11 @@
 from argparse import ArgumentParser
+from tkinter import BASELINE
 import numpy as np
 import pandas as pd
 import matplotlib
 import matplotlib.pyplot as plt
+from astropy.io import ascii
+from astropy.table import Table
 
 parser = ArgumentParser()
 
@@ -15,6 +18,9 @@ parser.add_argument('--theme',
                     """
 )
 
+
+AR_PATH = 'plots/data/processed/MST_MST_NectarCam/angular_resolution/'
+BASELINE = 'plots/data/baseline'
 
 metrics_dict = {
         "TPR": "True Positive Rate",
@@ -37,10 +43,10 @@ def metrics_bar_plot_all(
     fact = pd.read_csv('plots/data/metrics/metrics_fact_MST_MST_NectarCam.csv')
     tcc = pd.read_csv('plots/data/metrics/metrics_tcc_MST_MST_NectarCam.csv')
 
-    tail_b = pd.read_csv('plots/data/baseline/metrics_tailcuts_base.csv')
-    mars_b = pd.read_csv('plots/data/baseline/metrics_mars_base.csv')
-    fact_b = pd.read_csv('plots/data/baseline/metrics_fact_base.csv')
-    tcc_b = pd.read_csv('plots/data/baseline/metrics_tcc_base.csv')
+    tail_b = pd.read_csv(f'{BASELINE}/metrics_tailcuts_base.csv')
+    mars_b = pd.read_csv(f'{BASELINE}/metrics_mars_base.csv')
+    fact_b = pd.read_csv(f'{BASELINE}/metrics_fact_base.csv')
+    tcc_b = pd.read_csv(f'{BASELINE}/metrics_tcc_base.csv')
 
     tail = tail.iloc[[row_idx],:]
     mars = mars.iloc[[row_idx],:]
@@ -143,7 +149,8 @@ def plot_ang_res(
     tail,
     mars,
     fact,
-    tcc
+    tcc,
+    ylbl = True
 ) -> matplotlib.axes.Axes:
 
     ax.errorbar(
@@ -175,11 +182,12 @@ def plot_ang_res(
         label=rf"TCC"
     )
 
-    ax.set_ylabel(r'Rel. Angular Resolution $ \theta_{\SI{68}{\percent},\,\mathrm{rel}}$')
-    ax.set_xlabel(r'$E_{\mathrm{true}} \,\,/\,\, \mathrm{TeV}$')
-    ax.set_xscale('log')
-
-    ax.set_ylim(0, 3.5)
+    ax.set(
+        xlabel = r'$E_{\mathrm{true}} \,\,/\,\, \mathrm{TeV}$',
+        ylabel = r'Rel. Angular Resolution $ \theta_{\SI{68}{\percent},\,\mathrm{rel}}$' if ylbl else None,
+        xscale = 'log',
+        ylim = (0, 3.5)
+    )
 
     ax.legend(fontsize=12)
 
@@ -189,15 +197,15 @@ def plot_combined(
     ids: int,
     energy_unit: str="TeV"
 ):
-    tail = pd.read_csv(f"plots/data/processed/MST_MST_NectarCam/angular_resolution/tailcuts/ang_res_MST_MST_NectarCam_id_{ids[0]}.csv")
-    mars = pd.read_csv(f"plots/data/processed/MST_MST_NectarCam/angular_resolution/mars/ang_res_MST_MST_NectarCam_id_{ids[1]}.csv")
-    fact = pd.read_csv(f"plots/data/processed/MST_MST_NectarCam/angular_resolution/fact/ang_res_MST_MST_NectarCam_id_{ids[2]}.csv")
-    tcc = pd.read_csv(f"plots/data/processed/MST_MST_NectarCam/angular_resolution/tcc/ang_res_MST_MST_NectarCam_id_{ids[3]}.csv")
+    tail = pd.read_csv(f"{AR_PATH}/tailcuts/ang_res_MST_MST_NectarCam_id_{ids[0]}.csv")
+    mars = pd.read_csv(f"{AR_PATH}/mars/ang_res_MST_MST_NectarCam_id_{ids[1]}.csv")
+    fact = pd.read_csv(f"{AR_PATH}/fact/ang_res_MST_MST_NectarCam_id_{ids[2]}.csv")
+    tcc = pd.read_csv(f"{AR_PATH}/tcc/ang_res_MST_MST_NectarCam_id_{ids[3]}.csv")
 
-    tail_b = pd.read_csv("plots/data/baseline/angres_tailcuts_base.csv")
-    mars_b = pd.read_csv("plots/data/baseline/angres_mars_base.csv")
-    fact_b = pd.read_csv("plots/data/baseline/angres_fact_base.csv")
-    tcc_b = pd.read_csv("plots/data/baseline/angres_tcc_base.csv")
+    tail_b = pd.read_csv(f"{BASELINE}/angres_tailcuts_base.csv")
+    mars_b = pd.read_csv(f"{BASELINE}/angres_mars_base.csv")
+    fact_b = pd.read_csv(f"{BASELINE}/angres_fact_base.csv")
+    tcc_b = pd.read_csv(f"{BASELINE}/angres_tcc_base.csv")
 
     tail[["aeff", "angular_resolution"]] = tail[["aeff", "angular_resolution"]] / tail_b[["aeff", "angular_resolution"]]
     mars[["aeff", "angular_resolution"]] = mars[["aeff", "angular_resolution"]] / mars_b[["aeff", "angular_resolution"]]
@@ -234,6 +242,47 @@ def ar_eff():
             plt.close()
 
 
+def RelARminmax():
+    df_angres = pd.read_csv('plots/data/combined_table.csv')
+
+    tail_min = pd.read_csv(f"{AR_PATH}/tailcuts/ang_res_MST_MST_NectarCam_id_118.csv")
+    mars_min = pd.read_csv(f"{AR_PATH}/mars/ang_res_MST_MST_NectarCam_id_54.csv")
+    fact_min = pd.read_csv(f"{AR_PATH}/fact/ang_res_MST_MST_NectarCam_id_767.csv")
+    tcc_min = pd.read_csv(f"{AR_PATH}/tcc/ang_res_MST_MST_NectarCam_id_367.csv")
+
+    tail_max = pd.read_csv(f"{AR_PATH}/tailcuts/ang_res_MST_MST_NectarCam_id_101.csv")
+    mars_max = pd.read_csv(f"{AR_PATH}/mars/ang_res_MST_MST_NectarCam_id_13.csv")
+    fact_max = pd.read_csv(f"{AR_PATH}/fact/ang_res_MST_MST_NectarCam_id_974.csv")
+    tcc_max = pd.read_csv(f"{AR_PATH}/tcc/ang_res_MST_MST_NectarCam_id_1954.csv")
+
+    tail_b = pd.read_csv(f"{BASELINE}/angres_tailcuts_base.csv")
+    mars_b = pd.read_csv(f"{BASELINE}/angres_mars_base.csv")
+    fact_b = pd.read_csv(f"{BASELINE}/angres_fact_base.csv")
+    tcc_b = pd.read_csv(f"{BASELINE}/angres_tcc_base.csv")
+
+    tail_min[["aeff", "angular_resolution"]] = tail_min[["aeff", "angular_resolution"]] / tail_b[["aeff", "angular_resolution"]]
+    mars_min[["aeff", "angular_resolution"]] = mars_min[["aeff", "angular_resolution"]] / mars_b[["aeff", "angular_resolution"]]
+    fact_min[["aeff", "angular_resolution"]] = fact_min[["aeff", "angular_resolution"]] / fact_b[["aeff", "angular_resolution"]]
+    tcc_min[["aeff", "angular_resolution"]] = tcc_min[["aeff", "angular_resolution"]] / tcc_b[["aeff", "angular_resolution"]]
+
+    tail_max[["aeff", "angular_resolution"]] = tail_max[["aeff", "angular_resolution"]] / tail_b[["aeff", "angular_resolution"]]
+    mars_max[["aeff", "angular_resolution"]] = mars_max[["aeff", "angular_resolution"]] / mars_b[["aeff", "angular_resolution"]]
+    fact_max[["aeff", "angular_resolution"]] = fact_max[["aeff", "angular_resolution"]] / fact_b[["aeff", "angular_resolution"]]
+    tcc_max[["aeff", "angular_resolution"]] = tcc_max[["aeff", "angular_resolution"]] / tcc_b[["aeff", "angular_resolution"]]
+
+    size = plt.gcf().get_size_inches()
+
+    fig, ax = plt.subplots(1, 2, figsize=(size[0]*2, size[1]*1.25), constrained_layout=True, dpi=300, sharey=True)
+    ax = ax.flatten()
+    plot_ang_res(ax=ax[0], tail=tail_min, mars=mars_min, fact=fact_min, tcc=tcc_min)
+    plot_ang_res(ax=ax[1], tail=tail_max, mars=mars_max, fact=fact_max, tcc=tcc_max, ylbl=False)
+
+    ax[0].set_title(r"$0.10 \leq \mathrm{Efficiency} < 0.15$")
+    ax[1].set_title(r"$0.40 \leq \mathrm{Efficiency} < 0.45$")
+
+    plt.savefig(f'build/Rel_AR_minmax_base_{args.theme}.pdf')
+
+
 if __name__ == "__main__":
 
     args = parser.parse_args()
@@ -248,3 +297,5 @@ if __name__ == "__main__":
 
     plt.rc('axes', labelsize=16)
     ar_eff()
+
+    RelARminmax()

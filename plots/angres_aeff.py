@@ -20,6 +20,7 @@ parser.add_argument('--theme',
 plt.rc('axes', labelsize=16)
 
 INPUT_BASE = "./plots/data/processed"
+AR_PATH = 'plots/data/processed/MST_MST_NectarCam/angular_resolution/'
 
 
 def plot_eff_area(
@@ -28,7 +29,10 @@ def plot_eff_area(
     mars,
     fact,
     tcc,
-    energy_unit: str="TeV"
+    energy_unit: str="TeV",
+    xlbl=True,
+    ylbl=True,
+    ylim=None
 ) -> matplotlib.axes.Axes:
 
 
@@ -74,22 +78,24 @@ def plot_eff_area(
     ax.set_xscale("log")
     ax.set_yscale("log")
 
-    ax.set_xlabel(
-        rf"$E_{{\mathrm{{true}}}} \,\, / \,\, \mathrm{{{energy_unit}}}$"
+    ax.set(
+        xlabel = rf"$E_{{\mathrm{{true}}}} \,\, / \,\, \mathrm{{{energy_unit}}}$" if xlbl else None,
+        ylabel = r"$n_\mathrm{reco} \;/\; n_\mathrm{total}$" if ylbl else None,
+        ylim = (1e-3, 1e3) if ylim is None else ylim
     )
-    ax.set_ylabel(r"$n_\mathrm{reco} \;/\; n_\mathrm{total}$")
 
     ax.legend(fontsize=12)
 
     return ax
-
 
 def plot_ang_res(
     ax: matplotlib.axes.Axes,
     tail,
     mars,
     fact,
-    tcc
+    tcc,
+    xlbl=True,
+    ylbl=True
 ) -> matplotlib.axes.Axes:
 
     ax.errorbar(
@@ -121,11 +127,12 @@ def plot_ang_res(
         label=rf"TCC, $\mathrm{{Mean Ang.Res.}} = {np.mean(tcc['angular_resolution']):.3f}$"
     )
 
-    ax.set_ylabel(r'Angular Resolution $\theta_{68\%} \,\, / \,\, \mathrm{deg}$')
-    ax.set_xlabel(r'$E_{\mathrm{true}} \,\,/\,\, \mathrm{TeV}$')
-    ax.set_xscale('log')
-
-    ax.set_ylim(0, 1.4)
+    ax.set(
+        xlabel = r'$E_{\mathrm{true}} \,\,/\,\, \mathrm{TeV}$' if xlbl else None,
+        ylabel = r'Angular Resolution $\theta_{68\%} \,\, / \,\, \mathrm{deg}$' if ylbl else None,
+        xscale = 'log',
+        ylim = (0, 1.4)
+    )
 
     ax.legend(fontsize=12)
 
@@ -171,6 +178,34 @@ def main():
             plt.close()
 
 
+def effARminmax():
+
+    tail_min = pd.read_csv(f"{AR_PATH}/tailcuts/ang_res_MST_MST_NectarCam_id_118.csv")
+    mars_min = pd.read_csv(f"{AR_PATH}/mars/ang_res_MST_MST_NectarCam_id_54.csv")
+    fact_min = pd.read_csv(f"{AR_PATH}/fact/ang_res_MST_MST_NectarCam_id_767.csv")
+    tcc_min = pd.read_csv(f"{AR_PATH}/tcc/ang_res_MST_MST_NectarCam_id_367.csv")
+
+    tail_max = pd.read_csv(f"{AR_PATH}/tailcuts/ang_res_MST_MST_NectarCam_id_101.csv")
+    mars_max = pd.read_csv(f"{AR_PATH}/mars/ang_res_MST_MST_NectarCam_id_13.csv")
+    fact_max = pd.read_csv(f"{AR_PATH}/fact/ang_res_MST_MST_NectarCam_id_974.csv")
+    tcc_max = pd.read_csv(f"{AR_PATH}/tcc/ang_res_MST_MST_NectarCam_id_1954.csv")
+
+    size = plt.gcf().get_size_inches()
+
+    fig, ax = plt.subplots(2, 2, figsize=(size[0]*2, size[1]*3), constrained_layout=True, dpi=300, sharey='row', sharex='col')
+    ax = ax.flatten()
+    plot_ang_res(ax=ax[0], tail=tail_min, mars=mars_min, fact=fact_min, tcc=tcc_min, xlbl=False)
+    plot_ang_res(ax=ax[1], tail=tail_max, mars=mars_max, fact=fact_max, tcc=tcc_max, xlbl=False, ylbl=False)
+    plot_eff_area(ax=ax[2], tail=tail_min, mars=mars_min, fact=fact_min, tcc=tcc_min, energy_unit="TeV", ylim=(1e-3, 1e0))
+    plot_eff_area(ax=ax[3], tail=tail_max, mars=mars_max, fact=fact_max, tcc=tcc_max, energy_unit="TeV", ylbl=False, ylim=(1e-3, 1e0))
+
+    ax[0].set_title(r"$0.10 \leq \mathrm{Efficiency} < 0.15$")
+    ax[1].set_title(r"$0.40 \leq \mathrm{Efficiency} < 0.45$")
+
+
+    plt.savefig(f'build/AR_EFF_{args.theme}.pdf')
+
+
 if __name__ == "__main__":
     args = parser.parse_args()
 
@@ -186,6 +221,9 @@ if __name__ == "__main__":
     ax2.set_ylim(1e-2, 1)
     fig.suptitle(r"$0.40 \leq \mathrm{Efficiency} < 0.45$")
     plt.savefig(f'build/AR_Aeff_MST_0.40_0.45_{args.theme}.pdf')
+    plt.close()
+
+    effARminmax()
 
     # fig, ax, ax2 = plot_combined([118, 54, 767, 367])
     # fig.suptitle(r"$0.10 \leq \mathrm{Efficiency} < 0.15$")

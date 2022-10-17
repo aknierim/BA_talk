@@ -2,18 +2,30 @@
 \label{sub:Efficiency_AR}
 
 \begin{frame}{Efficiency and Angular Resolution}
-    Efficiency is calculated as \(\displaystyle \eff = \frac{n_\text{reco}}{n_\text{total}}\).
+    % Efficiency is calculated as \(\displaystyle \eff = \frac{n_\text{reco}}{n_\text{total}}\).
+    % \begin{columns}
+    %     \begin{column}{0.48\textwidth}
+    %         \centering
+    %         \includegraphics[height=0.8\textheight]{build/AR_Aeff_MST_0.10_0.15_dark.pdf}
+    %     \end{column}
+    %     \hspace{-3cm}
+    %     \begin{column}{0.48\textwidth}
+    %         \centering
+    %         \includegraphics[height=0.8\textheight]{build/AR_Aeff_MST_0.40_0.45_dark.pdf}
+    %     \end{column}
+    % \end{columns}
     \begin{columns}
-        \begin{column}{0.48\textwidth}
-            \centering
-            \includegraphics[height=0.8\textheight]{build/AR_Aeff_MST_0.10_0.15_dark.pdf}
+        \begin{column}{0.28\textwidth}
+            \begin{itemize}
+                \item [\rightarrow] Efficiency: \hspace{0.5cm} \(\displaystyle \eff = \frac{n_\text{reco}}{n_\text{total}}\)
+            \end{itemize}
         \end{column}
-        \hspace{-3cm}
-        \begin{column}{0.48\textwidth}
+        \begin{column}{0.68\textwidth}
             \centering
-            \includegraphics[height=0.8\textheight]{build/AR_Aeff_MST_0.40_0.45_dark.pdf}
+            \includegraphics[width=0.85\textwidth]{build/AR_EFF_dark.pdf}
         \end{column}
     \end{columns}
+
 \end{frame}
 
 \begin{frame}{Efficiency vs. Angular Resolution}
@@ -108,6 +120,26 @@
 
 \subsection{Comparison of the Algorithms}%
 \label{sub:Comparison}
+
+\begin{frame}[label=rel_AR]{Relative Angular Resolution}
+    % \begin{columns}
+    %     \begin{column}{0.48\textwidth}
+    %         \centering
+    %         \includegraphics[width=0.9\textwidth]{build/Rel_AR_0.10_0.15_base_dark.pdf}
+    %     \end{column}
+    %     \begin{column}{0.48\textwidth}
+    %         \centering
+    %         \includegraphics[width=0.9\textwidth]{build/Rel_AR_0.40_0.45_base_dark.pdf}
+    %     \end{column}
+    % \end{columns}
+    \begin{flushleft}
+        Relative angular resolution: \hspace{2cm} \(\displaystyle \theta_{\SI{68}{\percent},\,\text{rel}} = \frac{\theta_{\SI{68}{\percent}}}{\theta_{\SI{68}{\percent},\,\text{base}}}\)
+    \end{flushleft}
+
+    \vspace{0.75cm}
+    \centering
+    \includegraphics[width=0.9\textwidth]{build/Rel_AR_minmax_base_dark.pdf}
+\end{frame}
 
 \begin{frame}[label=metrics_baseline]{Performance Compared to the Default Settings}
     \centering
