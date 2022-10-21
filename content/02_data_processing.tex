@@ -14,18 +14,6 @@
     }
 \end{frame}
 
-\begin{frame}
-    \ifthenelse{\equal{\theme}{\string 1}}
-    {% use dark theme
-    \centering
-    \includegraphics[width=\textwidth]{build/tikz/data_pipeline_dark.pdf}
-    }
-    {% use light theme
-    \centering
-    \includegraphics[width=\textwidth]{build/tikz/data_pipeline.pdf}
-    }
-\end{frame}
-
 \subsection{Cleaning Algorithms}%
 \label{sub:Cleaning_algorithms}
 
@@ -65,4 +53,17 @@
             }
         }
     \end{overlayarea}
+\end{frame}
+
+\subsection{This Work's Pipeline}
+\begin{frame}{This Work's Pipeline}
+    \ifthenelse{\equal{\theme}{\string 1}}
+    {% use dark theme
+    \centering
+    \includegraphics[width=\textwidth]{build/tikz/data_pipeline_dark.pdf}
+    }
+    {% use light theme
+    \centering
+    \includegraphics[width=\textwidth]{build/tikz/data_pipeline.pdf}
+    }
 \end{frame}
