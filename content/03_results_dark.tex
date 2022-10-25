@@ -16,8 +16,10 @@
     % \end{columns}
     \begin{columns}
         \begin{column}{0.28\textwidth}
-            \begin{itemize}
+            \begin{itemize}\setlength\itemsep{2em}
                 \item [\rightarrow] Efficiency: \hspace{0.5cm} \(\displaystyle \eff = \frac{n_\text{reco}}{n_\text{total}}\)
+                \item [\textcolor{white!70!black}{\(n_\text{reco}\):}] Number of reconstructed events
+                \item [\textcolor{white!70!black}{\(n_\text{total}\):}] Total number of events
             \end{itemize}
         \end{column}
         \begin{column}{0.68\textwidth}
@@ -37,7 +39,7 @@
 \label{sub:Metrics}
 
 \begin{frame}{Evaluation Metrics}
-    \begin{minipage}{0.48\textwidth}
+    \begin{minipage}{0.33\textwidth}
         \begingroup
         \setlength{\jot}{10pt}
         \begin{align*}
@@ -49,7 +51,7 @@
         \end{align*}
         \endgroup
     \end{minipage}
-    \begin{minipage}{0.48\textwidth}
+    \begin{minipage}{0.66\textwidth}
         \begin{table}
             \centering
             \begin{tblr}{
@@ -63,6 +65,13 @@
             & neg. & False Positive ($\fp$) & True Negative ($\tn$) \\
             \end{tblr}
         \end{table}
+        \vspace{0.5cm}
+        \begin{description}[leftmargin=!]
+            \item [\textcolor{white!70!black}{Positive pixel:}] Pixel that contains at least one Cherenkov photon.
+            \item [\textcolor{white!70!black}{Negative pixel:}] Pixel that contains no Cherenkov photon.
+        \end{description}
+
+
     \end{minipage}
 \end{frame}
 
